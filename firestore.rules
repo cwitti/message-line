@@ -1,0 +1,169 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function allowedLineIds() {
+      return ['life', 'happy', 'sad', 'politics', 'wallstreet', 'art', 'love'];
+    }
+
+    function noteRequiredFields() {
+      return ['id', 'lineId', 'type', 'title', 'createdAt', 'x', 'rotation', 'color', 'votes'];
+    }
+
+    function noteOptionalFields() {
+      return ['message', 'image'];
+    }
+
+    function validLineId(lineId) {
+      return lineId is string && allowedLineIds().hasAny([lineId]);
+    }
+
+    function validType(type) {
+      return ['text', 'drawing'].hasAny([type]);
+    }
+
+    function validColor(color) {
+      return ['#fffdf7', '#f6fbff', '#f7fff8', '#fff8fb'].hasAny([color]);
+    }
+
+    function validCreatedAt(value) {
+      return value is string
+        && value.size() >= 20
+        && value.size() <= 40
+        && value.matches('^\\d{4}-\\d{2}-\\d{2}T.*Z$');
+    }
+
+    function validVoteMap(votes) {
+      return votes is map
+        && votes.keys().hasOnly(['up', 'down'])
+        && votes.up is int
+        && votes.down is int
+        && votes.up >= 0
+        && votes.down >= 0;
+    }
+
+    function validTextPayload(data) {
+      return data.type == 'text'
+        && data.keys().hasAll(['message'])
+        && !data.keys().hasAny(['image'])
+        && data.message is string
+        && data.message.size() > 0
+        && data.message.size() <= 360;
+    }
+
+    function validDrawingPayload(data) {
+      return data.type == 'drawing'
+        && data.keys().hasAll(['image'])
+        && !data.keys().hasAny(['message'])
+        && data.image is string
+        && data.image.size() > 0
+        && data.image.size() <= 1000000
+        && data.image.matches('^data:image/png;base64,.*');
+    }
+
+    function validNote(data) {
+      return data.keys().hasAll(noteRequiredFields())
+        && data.keys().hasOnly(noteRequiredFields().concat(noteOptionalFields()))
+        && data.id is string
+        && validLineId(data.lineId)
+        && validType(data.type)
+        && data.title is string
+        && data.title.size() > 0
+        && data.title.size() <= 60
+        && validCreatedAt(data.createdAt)
+        && data.x is int
+        && data.x >= 0
+        && data.rotation is number
+        && validColor(data.color)
+        && validVoteMap(data.votes)
+        && (
+          (data.type == 'text' && validTextPayload(data)) ||
+          (data.type == 'drawing' && validDrawingPayload(data))
+        );
+    }
+
+    function validVoteUpdate() {
+      let upDelta = request.resource.data.votes.up - resource.data.votes.up;
+      let downDelta = request.resource.data.votes.down - resource.data.votes.down;
+
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(['votes'])
+        && validVoteMap(request.resource.data.votes)
+        && upDelta >= -1
+        && upDelta <= 1
+        && downDelta >= -1
+        && downDelta <= 1
+        && !(upDelta == 0 && downDelta == 0)
+        && !(upDelta == 1 && downDelta == 1)
+        && !(upDelta == -1 && downDelta == -1);
+    }
+
+    function validNoteReport(data) {
+      return data.keys().hasOnly([
+          'noteId',
+          'lineId',
+          'noteTitle',
+          'noteType',
+          'noteCreatedAt',
+          'reason',
+          'status',
+          'createdAt'
+        ])
+        && data.keys().hasAll([
+          'noteId',
+          'lineId',
+          'noteTitle',
+          'noteType',
+          'noteCreatedAt',
+          'reason',
+          'status',
+          'createdAt'
+        ])
+        && data.noteId is string
+        && validLineId(data.lineId)
+        && validType(data.noteType)
+        && data.noteTitle is string
+        && data.noteTitle.size() > 0
+        && data.noteTitle.size() <= 60
+        && validCreatedAt(data.noteCreatedAt)
+        && data.reason is string
+        && data.reason.size() > 0
+        && data.reason.size() <= 280
+        && data.status == 'pending'
+        && validCreatedAt(data.createdAt);
+    }
+
+    function validLineSuggestion(data) {
+      return data.keys().hasOnly(['label', 'suggestedId', 'reason', 'status', 'createdAt'])
+        && data.keys().hasAll(['label', 'suggestedId', 'reason', 'status', 'createdAt'])
+        && data.label is string
+        && data.label.size() > 0
+        && data.label.size() <= 40
+        && data.suggestedId is string
+        && data.suggestedId.matches('^[a-z0-9]+(?:-[a-z0-9]+)*$')
+        && data.reason is string
+        && data.reason.size() > 0
+        && data.reason.size() <= 280
+        && data.status == 'pending'
+        && validCreatedAt(data.createdAt);
+    }
+
+    match /notes/{noteId} {
+      allow read: if true;
+      allow create: if request.resource.data.id == noteId
+        && request.resource.data.votes.up == 0
+        && request.resource.data.votes.down == 0
+        && validNote(request.resource.data);
+      allow update: if validVoteUpdate();
+      allow delete: if false;
+    }
+
+    match /noteReports/{reportId} {
+      allow create: if validNoteReport(request.resource.data);
+      allow read, update, delete: if false;
+    }
+
+    match /lineSuggestions/{suggestionId} {
+      allow create: if validLineSuggestion(request.resource.data);
+      allow read, update, delete: if false;
+    }
+  }
+}

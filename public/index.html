@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Message Line</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body class="line-picker-open line-picker-skip-scene-transition">
+    <div class="fixed-background" aria-hidden="true">
+      <div class="sky-layer"></div>
+      <div class="cloud-layer">
+        <img class="cloud cloud-a" src="/assets/images/weather/cloud1.png" alt="">
+        <img class="cloud cloud-b" src="/assets/images/weather/cloud2.png" alt="">
+        <img class="cloud cloud-c" src="/assets/images/weather/cloud3.png" alt="">
+        <img class="cloud cloud-d" src="/assets/images/weather/cloud4.png" alt="">
+        <img class="cloud cloud-e" src="/assets/images/weather/cloud5.png" alt="">
+        <img class="cloud cloud-f" src="/assets/images/weather/cloud6.png" alt="">
+        <img class="cloud cloud-g" src="/assets/images/weather/cloud7.png" alt="">
+        <img class="cloud cloud-h" src="/assets/images/weather/cloud8.png" alt="">
+        <img class="cloud cloud-i" src="/assets/images/weather/cloud9.png" alt="">
+        <img class="cloud cloud-j" src="/assets/images/weather/cloud10.png" alt="">
+      </div>
+      <div class="sky-traffic-layer">
+        <svg class="flyer bird bird-a" viewBox="0 0 146 52">
+          <path d="M 8 34 C 22 15 42 14 62 33"></path>
+          <path d="M 60 33 C 80 12 107 13 138 34"></path>
+          <path d="M 56 31 C 61 28 66 28 72 31"></path>
+        </svg>
+        <svg class="flyer bird bird-b reverse" viewBox="0 0 168 58">
+          <path d="M 8 37 C 28 10 51 9 75 36"></path>
+          <path d="M 73 36 C 97 13 124 13 160 37"></path>
+          <path d="M 68 33 C 75 29 82 29 88 33"></path>
+        </svg>
+        <svg class="flyer bird bird-c" viewBox="0 0 128 44">
+          <path d="M 6 30 C 20 14 37 13 55 30"></path>
+          <path d="M 53 30 C 67 16 89 15 122 31"></path>
+        </svg>
+        <svg class="flyer bird bird-d reverse" viewBox="0 0 150 50">
+          <path d="M 8 32 C 24 14 42 14 64 31"></path>
+          <path d="M 62 31 C 79 15 102 15 142 33"></path>
+          <path d="M 59 28 C 65 25 70 25 76 28"></path>
+        </svg>
+        <svg class="flyer bird bird-e" viewBox="0 0 126 44">
+          <path d="M 6 29 C 18 18 35 17 54 29"></path>
+          <path d="M 52 29 C 66 17 86 16 120 31"></path>
+        </svg>
+      </div>
+      <div class="picker-cloud-layer">
+        <img class="cloud picker-cloud picker-cloud-a" src="/assets/images/weather/cloud2.png" alt="">
+        <img class="cloud picker-cloud picker-cloud-b" src="/assets/images/weather/cloud6.png" alt="">
+        <img class="cloud picker-cloud picker-cloud-c" src="/assets/images/weather/cloud8.png" alt="">
+        <img class="cloud picker-cloud picker-cloud-d" src="/assets/images/weather/cloud9.png" alt="">
+        <img class="cloud picker-cloud picker-cloud-e" src="/assets/images/weather/cloud4.png" alt="">
+        <img class="cloud picker-cloud picker-cloud-f" src="/assets/images/weather/cloud10.png" alt="">
+      </div>
+      <div class="picker-bird-layer">
+        <svg class="flyer bird picker-bird picker-bird-a" viewBox="0 0 150 50">
+          <path d="M 8 32 C 24 14 42 14 64 31"></path>
+          <path d="M 62 31 C 79 15 102 15 142 33"></path>
+          <path d="M 59 28 C 65 25 70 25 76 28"></path>
+        </svg>
+        <svg class="flyer bird picker-bird picker-bird-b reverse" viewBox="0 0 168 58">
+          <path d="M 8 37 C 28 10 51 9 75 36"></path>
+          <path d="M 73 36 C 97 13 124 13 160 37"></path>
+          <path d="M 68 33 C 75 29 82 29 88 33"></path>
+        </svg>
+        <svg class="flyer bird picker-bird picker-bird-c" viewBox="0 0 126 44">
+          <path d="M 6 29 C 18 18 35 17 54 29"></path>
+          <path d="M 52 29 C 66 17 86 16 120 31"></path>
+        </svg>
+        <svg class="flyer bird picker-bird picker-bird-d reverse" viewBox="0 0 146 52">
+          <path d="M 8 34 C 22 15 42 14 62 33"></path>
+          <path d="M 60 33 C 80 12 107 13 138 34"></path>
+          <path d="M 56 31 C 61 28 66 28 72 31"></path>
+        </svg>
+      </div>
+      <div class="scene-layer skyscrapers-layer"></div>
+      <div class="scene-layer houses-layer"></div>
+      <div class="scene-layer railing-layer"></div>
+      <div class="scene-layer floor-layer"></div>
+      <div class="mist-layer"></div>
+    </div>
+    <img class="title-banner" src="/assets/images/background/title.png" alt="" aria-hidden="true">
+    <div class="title-actions" aria-label="Primary actions">
+      <button class="button hand-drawn-button hand-drawn-button-ghost" id="openLinePicker" type="button">
+        <svg
+          class="button-cosm"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="#000000"
+          width="128"
+          height="128"
+          viewBox="0 0 256 256"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M243.07324,157.43945c-1.2334-1.47949-23.18847-27.34619-60.46972-41.05859-1.67579-17.97412-8.25293-34.36328-18.93653-46.87158C149.41309,52.8208,128.78027,44,104,44,54.51074,44,22.10059,88.57715,20.74512,90.4751a3.99987,3.99987,0,0,0,6.50781,4.65234C27.5625,94.6958,58.68359,52,104,52c22.36816,0,40.89648,7.85107,53.584,22.70508,8.915,10.437,14.65625,23.9541,16.65528,38.894A133.54185,133.54185,0,0,0,136,108c-25.10742,0-46.09473,6.48486-60.69434,18.75391-12.65234,10.63379-19.91015,25.39355-19.91015,40.49463a43.61545,43.61545,0,0,0,12.69336,31.21923C76.98438,207.3208,89.40234,212,104,212c23.98047,0,44.37305-9.4668,58.97461-27.37744,12.74512-15.6333,20.05566-37.145,20.05566-59.01953,0-.1128-.001-.22559-.001-.33838,33.62988,13.48486,53.62207,36.96631,53.89746,37.2959a4.00015,4.00015,0,0,0,6.14648-5.1211ZM104,204c-27.89746,0-40.60449-19.05078-40.60449-36.75146C63.39551,142.56592,86.11621,116,136,116a124.37834,124.37834,0,0,1,38.97266,6.32617q.05712,1.63038.05761,3.27686C175.03027,177.07129,139.29785,204,104,204Z"
+          ></path>
+        </svg>
+        <svg class="highlight" viewBox="0 0 144.75738 77.18431" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <g transform="translate(-171.52826,-126.11624)">
+            <g fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="10">
+              <path d="M180.02826,169.45123c0,0 12.65228,-25.55115 24.2441,-25.66863c6.39271,-0.06479 -5.89143,46.12943 4.90937,50.63857c10.22345,4.2681 24.14292,-52.38336 37.86455,-59.80493c3.31715,-1.79413 -5.35094,45.88889 -0.78872,58.34589c5.19371,14.18125 33.36934,-58.38221 36.43049,-56.91633c4.67078,2.23667 -0.06338,44.42744 5.22574,47.53647c6.04041,3.55065 19.87185,-20.77286 19.87185,-20.77286"></path>
+            </g>
+          </g>
+        </svg>
+        <span class="button-label">Choose line</span>
+      </button>
+      <button class="button hand-drawn-button hand-drawn-button-primary" id="openComposer" type="button">
+        <svg
+          class="button-cosm"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="#000000"
+          width="128"
+          height="128"
+          viewBox="0 0 256 256"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M243.07324,157.43945c-1.2334-1.47949-23.18847-27.34619-60.46972-41.05859-1.67579-17.97412-8.25293-34.36328-18.93653-46.87158C149.41309,52.8208,128.78027,44,104,44,54.51074,44,22.10059,88.57715,20.74512,90.4751a3.99987,3.99987,0,0,0,6.50781,4.65234C27.5625,94.6958,58.68359,52,104,52c22.36816,0,40.89648,7.85107,53.584,22.70508,8.915,10.437,14.65625,23.9541,16.65528,38.894A133.54185,133.54185,0,0,0,136,108c-25.10742,0-46.09473,6.48486-60.69434,18.75391-12.65234,10.63379-19.91015,25.39355-19.91015,40.49463a43.61545,43.61545,0,0,0,12.69336,31.21923C76.98438,207.3208,89.40234,212,104,212c23.98047,0,44.37305-9.4668,58.97461-27.37744,12.74512-15.6333,20.05566-37.145,20.05566-59.01953,0-.1128-.001-.22559-.001-.33838,33.62988,13.48486,53.62207,36.96631,53.89746,37.2959a4.00015,4.00015,0,0,0,6.14648-5.1211ZM104,204c-27.89746,0-40.60449-19.05078-40.60449-36.75146C63.39551,142.56592,86.11621,116,136,116a124.37834,124.37834,0,0,1,38.97266,6.32617q.05712,1.63038.05761,3.27686C175.03027,177.07129,139.29785,204,104,204Z"
+          ></path>
+        </svg>
+        <svg class="highlight" viewBox="0 0 144.75738 77.18431" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <g transform="translate(-171.52826,-126.11624)">
+            <g fill="none" stroke-width="17" stroke-linecap="round" stroke-miterlimit="10">
+              <path d="M180.02826,169.45123c0,0 12.65228,-25.55115 24.2441,-25.66863c6.39271,-0.06479 -5.89143,46.12943 4.90937,50.63857c10.22345,4.2681 24.14292,-52.38336 37.86455,-59.80493c3.31715,-1.79413 -5.35094,45.88889 -0.78872,58.34589c5.19371,14.18125 33.36934,-58.38221 36.43049,-56.91633c4.67078,2.23667 -0.06338,44.42744 5.22574,47.53647c6.04041,3.55065 19.87185,-20.77286 19.87185,-20.77286"></path>
+            </g>
+          </g>
+        </svg>
+        <span class="button-label">Add note</span>
+      </button>
+    </div>
+    <div class="swipe-hint" id="swipeHint" aria-hidden="true">
+      <div class="swipe-hint-inner">
+        <svg class="swipe-hint-icon" viewBox="0 0 160 74" preserveAspectRatio="none" focusable="false">
+          <path class="swipe-hint-stroke" d="M 28 28 C 56 23 103 23 132 28"></path>
+          <path class="swipe-hint-stroke swipe-hint-stroke-echo" d="M 30 32 C 58 27 101 27 130 31"></path>
+          <path class="swipe-hint-stroke" d="M 46 14 L 22 28 L 46 42"></path>
+          <path class="swipe-hint-stroke swipe-hint-stroke-echo" d="M 48 17 L 27 30 L 46 44"></path>
+          <path class="swipe-hint-stroke" d="M 114 14 L 138 28 L 114 42"></path>
+          <path class="swipe-hint-stroke swipe-hint-stroke-echo" d="M 112 17 L 133 30 L 114 44"></path>
+        </svg>
+        <span class="swipe-hint-label">swipe</span>
+      </div>
+    </div>
+    <svg class="hand-drawn-filters" height="0" width="0" aria-hidden="true" focusable="false">
+      <filter id="handDrawnNoise">
+        <feTurbulence result="noise" numOctaves="8" baseFrequency="0.1" type="fractalNoise"></feTurbulence>
+        <feDisplacementMap yChannelSelector="G" xChannelSelector="R" scale="3" in2="noise" in="SourceGraphic"></feDisplacementMap>
+      </filter>
+      <filter id="handDrawnNoise2">
+        <feTurbulence result="noise" numOctaves="8" baseFrequency="0.1" seed="1010" type="fractalNoise"></feTurbulence>
+        <feDisplacementMap yChannelSelector="G" xChannelSelector="R" scale="3" in2="noise" in="SourceGraphic"></feDisplacementMap>
+      </filter>
+      <filter id="handDrawnNoiset">
+        <feTurbulence result="noise" numOctaves="8" baseFrequency="0.1" type="fractalNoise"></feTurbulence>
+        <feDisplacementMap yChannelSelector="G" xChannelSelector="R" scale="6" in2="noise" in="SourceGraphic"></feDisplacementMap>
+      </filter>
+      <filter id="handDrawnNoiset2">
+        <feTurbulence result="noise" numOctaves="8" baseFrequency="0.1" seed="1010" type="fractalNoise"></feTurbulence>
+        <feDisplacementMap yChannelSelector="G" xChannelSelector="R" scale="6" in2="noise" in="SourceGraphic"></feDisplacementMap>
+      </filter>
+    </svg>
+
+    <header class="topbar">
+      <div class="topbar-copy">
+        <p class="eyebrow">Message Line</p>
+        <h1>Leave a note on the wire.</h1>
+        <p class="line-context" id="currentLineLabel">Kitchen string</p>
+        <p class="line-cooldown line-cooldown-hidden" id="lineCooldownTimer" aria-live="polite"></p>
+      </div>
+    </header>
+
+    <main class="viewport" id="viewport" tabindex="0" aria-label="Message line">
+      <section class="world" id="world">
+        <svg class="cord" id="cord" viewBox="0 0 5200 330" preserveAspectRatio="none" aria-hidden="true">
+          <path id="cordPath" d="M -80 130 C 720 155 1230 185 1900 168 S 3100 122 3950 113 S 4770 133 5280 88"></path>
+        </svg>
+        <div class="note-layer" id="noteLayer"></div>
+      </section>
+    </main>
+
+    <aside class="rail-status" aria-live="polite">
+      <span class="line-badge" id="activeLineBadge">Kitchen string</span>
+      <span id="noteCount">0 notes</span>
+      <button class="ghost-button" id="jumpNewest" type="button">Newest</button>
+      <button class="ghost-button" id="jumpTopUp" type="button">Most upvotes</button>
+      <button class="ghost-button" id="jumpTopDown" type="button">Most downvotes</button>
+    </aside>
+
+    <section class="line-picker" id="linePicker" role="dialog" aria-modal="true" aria-labelledby="linePickerTitle">
+      <div class="line-picker-panel">
+        <div class="line-picker-head">
+          <h2 id="linePickerTitle">Choose a line.</h2>
+        </div>
+        <div class="line-picker-body">
+          <div class="line-picker-list" id="linePickerList"></div>
+          <div class="line-picker-scroll-scribble is-hidden" id="linePickerScrollScribble" aria-hidden="true">
+            <svg class="line-picker-scroll-track-svg" viewBox="0 0 24 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <path
+                class="line-picker-scroll-track-path line-picker-scroll-track-path-shadow"
+                d="M 10.2 1.5 C 11.9 18.5 9.4 35.5 11.6 52.5 C 13.2 67.5 10.6 83.4 12.1 98.5"
+              ></path>
+              <path
+                class="line-picker-scroll-track-path line-picker-scroll-track-path-main"
+                d="M 13.3 1.5 C 11.5 19.5 14.2 37.5 12.1 55 C 10.5 69.5 13.4 84.5 12.2 98.5"
+              ></path>
+            </svg>
+            <svg
+              class="line-picker-scroll-thumb-svg"
+              id="linePickerScrollThumb"
+              viewBox="0 0 24 100"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                class="line-picker-scroll-thumb-path line-picker-scroll-thumb-path-shadow"
+                d="M 10.1 3 C 12.3 18 8.8 34 11.7 50 C 13.9 65 9.6 80 11.4 96"
+              ></path>
+              <path
+                class="line-picker-scroll-thumb-path line-picker-scroll-thumb-path-main"
+                d="M 13 4 C 10.9 19 14.2 35 11.7 51 C 9.8 66 13.4 81 11.9 96"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="line-picker-footer">
+        <p class="line-picker-status" id="linePickerStatus" aria-live="polite"></p>
+        <button class="ghost-button line-suggest-trigger" id="openLineSuggestion" type="button">Suggest new line</button>
+      </div>
+    </section>
+
+    <section class="ranking-panel hidden" id="rankingPanel" aria-labelledby="rankingTitle">
+      <div class="ranking-head">
+        <h2 id="rankingTitle">Most upvotes</h2>
+        <button class="icon-button" id="closeRanking" type="button" aria-label="Close list">x</button>
+      </div>
+      <div class="ranking-list" id="rankingList"></div>
+    </section>
+
+    <div class="modal hidden" id="readerModal" role="dialog" aria-modal="true" aria-labelledby="readerTitle">
+        <div class="modal-backdrop" data-close-reader></div>
+        <article class="reader-sheet" id="readerSheet">
+          <div class="reader-actions">
+            <button class="icon-button reader-report-open" id="openReportNote" type="button" aria-label="Report this note">!</button>
+          <button class="icon-button reader-close" type="button" data-close-reader aria-label="Close">x</button>
+          </div>
+          <h2 class="reader-heading" id="readerTitle">Pinned note</h2>
+          <div id="readerContent"></div>
+        <div class="vote-row" aria-label="Vote on this note">
+          <button class="vote-button" id="upvoteButton" type="button" data-vote="up">Upvote <span id="upvoteCount">0</span></button>
+          <button class="vote-button" id="downvoteButton" type="button" data-vote="down">Downvote <span id="downvoteCount">0</span></button>
+        </div>
+        <p class="vote-status" id="voteStatus" aria-live="polite"></p>
+      </article>
+    </div>
+
+    <div class="modal hidden" id="reportModal" role="dialog" aria-modal="true" aria-labelledby="reportTitle">
+      <div class="modal-backdrop" data-close-report></div>
+      <form class="composer utility-form" id="reportForm">
+        <button class="icon-button composer-close" type="button" data-close-report aria-label="Close">x</button>
+        <h2 id="reportTitle">Report this note.</h2>
+        <p class="composer-line-target" id="reportNoteLabel">We'll save your reason for review.</p>
+        <section class="composer-panel">
+          <label for="reportReasonInput">Reason</label>
+          <textarea id="reportReasonInput" maxlength="280" rows="6" placeholder="Why should this note be reviewed?"></textarea>
+          <div class="counter-row">
+            <span id="reportReasonCounter">0 / 280</span>
+          </div>
+        </section>
+        <p class="form-error" id="reportFormStatus" role="alert"></p>
+        <button class="primary-button full" id="submitReportNote" type="submit">Send report</button>
+      </form>
+    </div>
+
+    <div class="modal hidden" id="lineSuggestionModal" role="dialog" aria-modal="true" aria-labelledby="lineSuggestionTitle">
+      <div class="modal-backdrop" data-close-line-suggestion></div>
+      <form class="composer utility-form" id="lineSuggestionForm">
+        <button class="icon-button composer-close" type="button" data-close-line-suggestion aria-label="Close">x</button>
+        <h2 id="lineSuggestionTitle">Suggest a new line.</h2>
+        <p class="composer-line-target">Your suggestion will be reviewed before it appears.</p>
+        <section class="composer-panel">
+          <label for="lineSuggestionTitleInput">Line name</label>
+          <input id="lineSuggestionTitleInput" maxlength="40" type="text" placeholder="Neighborhood gossip" autocomplete="off">
+          <div class="counter-row">
+            <span id="lineSuggestionTitleCounter">0 / 40</span>
+          </div>
+        </section>
+        <section class="composer-panel">
+          <label for="lineSuggestionReasonInput">Why this line?</label>
+          <textarea id="lineSuggestionReasonInput" maxlength="280" rows="5" placeholder="Tell us what kind of notes belong there."></textarea>
+          <div class="counter-row">
+            <span id="lineSuggestionReasonCounter">0 / 280</span>
+          </div>
+        </section>
+        <p class="form-error" id="lineSuggestionStatus" role="alert"></p>
+        <button class="primary-button full" id="submitLineSuggestion" type="submit">Send suggestion</button>
+      </form>
+    </div>
+
+      <div class="modal hidden" id="composerModal" role="dialog" aria-modal="true" aria-labelledby="composerTitle">
+        <div class="modal-backdrop" data-close-composer></div>
+        <form class="composer" id="composerForm">
+          <button class="icon-button composer-close" type="button" data-close-composer aria-label="Close">x</button>
+          <h2 id="composerTitle">Pin something small.</h2>
+        <p class="composer-line-target" id="composerLineLabel">Kitchen string</p>
+        <p class="composer-cooldown line-cooldown-hidden" id="composerCooldownTimer" aria-live="polite"></p>
+
+        <section class="composer-panel">
+          <label for="titleInput">Title</label>
+          <input id="titleInput" maxlength="60" type="text" placeholder="A small headline." autocomplete="off">
+          <div class="counter-row">
+            <span id="titleCounter">0 / 60</span>
+          </div>
+        </section>
+
+        <div class="mode-tabs" role="tablist" aria-label="Note type">
+          <button class="tab active" id="textMode" type="button" role="tab" aria-selected="true">Message</button>
+          <button class="tab" id="drawMode" type="button" role="tab" aria-selected="false">Drawing</button>
+        </div>
+
+        <section class="composer-panel" id="messagePanel">
+          <label for="messageInput">Words</label>
+          <textarea id="messageInput" maxlength="360" rows="7" placeholder="A sentence, a secret, a tiny poem."></textarea>
+          <div class="counter-row">
+            <span id="wordCounter">0 / 45 words</span>
+            <span id="charCounter">0 / 360</span>
+          </div>
+        </section>
+
+        <section class="composer-panel hidden" id="drawingPanel">
+          <div class="draw-toolbar" aria-label="Drawing tools">
+            <div class="tool-group">
+              <span class="tool-label">Tool</span>
+              <div class="segmented-control">
+                <button class="tool-button selected" type="button" data-tool="pen">Pen</button>
+                <button class="tool-button" type="button" data-tool="line">Line</button>
+                <button class="tool-button" type="button" data-tool="square">Square</button>
+                <button class="tool-button" type="button" data-tool="circle">Circle</button>
+              </div>
+            </div>
+
+            <div class="tool-group">
+              <span class="tool-label">Ink</span>
+              <div class="ink-row">
+                <button class="ink selected" type="button" data-color="#2d2d2a" aria-label="Black ink"></button>
+                <button class="ink" type="button" data-color="#bf3657" aria-label="Pink ink"></button>
+                <button class="ink" type="button" data-color="#167f86" aria-label="Teal ink"></button>
+                <button class="ink" type="button" data-color="#66875b" aria-label="Green ink"></button>
+                <button class="ink" type="button" data-color="#d79b21" aria-label="Gold ink"></button>
+                <button class="ink" type="button" data-color="#4f5fbf" aria-label="Blue ink"></button>
+                <button class="ink" type="button" data-color="#8f4bb5" aria-label="Violet ink"></button>
+                <label class="color-picker" aria-label="Choose custom ink color">
+                  <input id="customColor" type="color" value="#2d2d2a">
+                  <span>Custom</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="tool-group thickness-group">
+              <label class="tool-label" for="brushSize">Thickness <span id="brushSizeValue">4</span></label>
+              <input id="brushSize" type="range" min="2" max="30" value="4">
+            </div>
+
+            <button class="ghost-button small" id="clearCanvas" type="button">Clear</button>
+          </div>
+          <canvas id="drawCanvas" width="680" height="480" aria-label="Drawing canvas"></canvas>
+        </section>
+
+        <p class="form-error" id="formError" role="alert"></p>
+        <button class="primary-button full" id="saveNote" type="submit">Pin note</button>
+      </form>
+    </div>
+
+    <template id="noteTemplate">
+      <button class="hanging-note" type="button">
+        <span class="note-sway">
+          <span class="pin" aria-hidden="true"></span>
+          <span class="hanger" aria-hidden="true"></span>
+          <span class="paper">
+            <span class="paper-top"></span>
+            <span class="paper-content"></span>
+          </span>
+        </span>
+      </button>
+    </template>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

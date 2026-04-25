@@ -1,0 +1,1052 @@
+[
+  {
+    "id": "5ce0423e-642a-4bef-945b-db1abe7b1e71",
+    "lineId": "life",
+    "type": "text",
+    "title": "Milk Crate",
+    "createdAt": "2026-04-18T08:00:00.000Z",
+    "x": 360,
+    "rotation": -2.2,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Saw a milk crate used as a nightstand through somebody's window and thought, yes, that's about right."
+  },
+  {
+    "id": "0142f843-68af-49b7-b186-91f466d3ed74",
+    "lineId": "life",
+    "type": "text",
+    "title": "Tuesday Stuff",
+    "createdAt": "2026-04-18T08:01:00.000Z",
+    "x": 700,
+    "rotation": 1.4,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "The bus was late, my toast burned, and then a stranger held the bakery door. Balanced day."
+  },
+  {
+    "id": "67dabffc-c7e1-4076-a3db-8111a5cbf74f",
+    "lineId": "life",
+    "type": "text",
+    "title": "Hallway Soup",
+    "createdAt": "2026-04-18T08:02:00.000Z",
+    "x": 1040,
+    "rotation": -1.1,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Someone on the third floor left lentil soup outside our door when I was sick. Never found out who."
+  },
+  {
+    "id": "a9a6814a-2ad3-4cce-adf9-5e845d8b7db2",
+    "lineId": "life",
+    "type": "text",
+    "title": "Tiny Promotion",
+    "createdAt": "2026-04-18T08:03:00.000Z",
+    "x": 1380,
+    "rotation": 2.1,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Got called \"reliable\" at work. Not sexy, not glamorous, but it paid my rent this month."
+  },
+  {
+    "id": "3403d83b-f871-4389-bbd5-15a809fc52ca",
+    "lineId": "life",
+    "type": "drawing",
+    "title": "Keys And Receipt",
+    "createdAt": "2026-04-18T08:04:00.000Z",
+    "x": 1720,
+    "rotation": -1.8,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20680%20480%22%3E%3Crect%20width%3D%22680%22%20height%3D%22480%22%20fill%3D%22%23fffdf7%22%2F%3E%3Ccircle%20cx%3D%22245%22%20cy%3D%22182%22%20r%3D%2254%22%20fill%3D%22none%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2212%22%2F%3E%3Cpath%20d%3D%22M299%20182h146%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M402%20182v34m-28-34v22%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M160%20302c43-39%20100-58%20162-58%2077%200%20133%2025%20200%2072%22%20fill%3D%22none%22%20stroke%3D%22%23bf3657%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E"
+  },
+  {
+    "id": "261c44d4-eb60-4969-aab6-c05ab57f251a",
+    "lineId": "life",
+    "type": "text",
+    "title": "Laundry Chair",
+    "createdAt": "2026-04-18T08:05:00.000Z",
+    "x": 2060,
+    "rotation": 1.2,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "There is a chair in my room that has not been a chair in six years. It's a fabric mountain."
+  },
+  {
+    "id": "1500343a-a2bb-43ec-9b98-cdd830d3bcb2",
+    "lineId": "life",
+    "type": "text",
+    "title": "Corner Shop",
+    "createdAt": "2026-04-18T08:06:00.000Z",
+    "x": 2400,
+    "rotation": -2.4,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "The man at the corner shop knows my cigarette brand and my grandma's favorite candy. That feels like community."
+  },
+  {
+    "id": "7718c907-7b7a-421c-bd78-262c1af1322e",
+    "lineId": "life",
+    "type": "drawing",
+    "title": "Window And Plant",
+    "createdAt": "2026-04-18T08:07:00.000Z",
+    "x": 2740,
+    "rotation": 2.3,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20680%20480%22%3E%3Crect%20width%3D%22680%22%20height%3D%22480%22%20fill%3D%22%23f6fbff%22%2F%3E%3Crect%20x%3D%22148%22%20y%3D%2292%22%20width%3D%22260%22%20height%3D%22236%22%20fill%3D%22none%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2212%22%2F%3E%3Cpath%20d%3D%22M278%2092v236M148%20210h260%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2210%22%2F%3E%3Cpath%20d%3D%22M465%20321c0-48%2028-82%2073-82%2030%200%2053%2021%2053%2051%200%2037-26%2060-67%2060-20%200-39-9-59-29z%22%20fill%3D%22none%22%20stroke%3D%22%2366875b%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M498%20208c26%2012%2042%2031%2047%2057%22%20fill%3D%22none%22%20stroke%3D%22%23bf3657%22%20stroke-width%3D%228%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E"
+  },
+  {
+    "id": "09642676-c43a-4c59-b7af-089aaf78c7fc",
+    "lineId": "life",
+    "type": "text",
+    "title": "Kitchen Light",
+    "createdAt": "2026-04-18T08:08:00.000Z",
+    "x": 3080,
+    "rotation": -0.8,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "The kitchen bulb flickers exactly twice before staying on. I keep meaning to fix it and never do."
+  },
+  {
+    "id": "f89fd315-6612-41d9-8f54-788f60bc31a6",
+    "lineId": "life",
+    "type": "text",
+    "title": "Late Walk",
+    "createdAt": "2026-04-18T08:09:00.000Z",
+    "x": 3420,
+    "rotation": 1.7,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Walked home with groceries digging into my fingers and felt oddly proud of being a person with dinner plans."
+  },
+  {
+    "id": "2073acfc-f770-47ad-9dae-422d37071468",
+    "lineId": "happy",
+    "type": "text",
+    "title": "Orange Soda",
+    "createdAt": "2026-04-18T08:10:00.000Z",
+    "x": 360,
+    "rotation": -2.2,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "My little brother passed his driving test and immediately bought orange soda for everybody."
+  },
+  {
+    "id": "eb282b02-e28d-468c-bcda-eabe9315a957",
+    "lineId": "happy",
+    "type": "text",
+    "title": "Nice Jacket",
+    "createdAt": "2026-04-18T08:11:00.000Z",
+    "x": 700,
+    "rotation": 1.4,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "A woman on the tram told me my jacket looked expensive. It was twelve euros secondhand. Riding that high all day."
+  },
+  {
+    "id": "2f786b9d-b16d-4472-b7ef-a9389eac48d6",
+    "lineId": "happy",
+    "type": "drawing",
+    "title": "Sun With Teeth",
+    "createdAt": "2026-04-18T08:12:00.000Z",
+    "x": 1040,
+    "rotation": -1.1,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20680%20480%22%3E%3Crect%20width%3D%22680%22%20height%3D%22480%22%20fill%3D%22%23fff8fb%22%2F%3E%3Ccircle%20cx%3D%22339%22%20cy%3D%22216%22%20r%3D%2276%22%20fill%3D%22none%22%20stroke%3D%22%23d79b21%22%20stroke-width%3D%2212%22%2F%3E%3Cpath%20d%3D%22M339%2088v-34M339%20378v34M211%20216h-34M501%20216h34M249%20126l-24-24M453%20330l24%2024M453%20102l24%2024M249%20306l-24%2024%22%20stroke%3D%22%23d79b21%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22312%22%20cy%3D%22204%22%20r%3D%227%22%20fill%3D%22%232d2d2a%22%2F%3E%3Ccircle%20cx%3D%22366%22%20cy%3D%22204%22%20r%3D%227%22%20fill%3D%22%232d2d2a%22%2F%3E%3Cpath%20d%3D%22M295%20248c18%2022%2072%2022%2090%200%22%20fill%3D%22none%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%229%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E"
+  },
+  {
+    "id": "4262b376-a771-404c-bad9-c0247b7a5413",
+    "lineId": "happy",
+    "type": "text",
+    "title": "Good Hair Day",
+    "createdAt": "2026-04-18T08:13:00.000Z",
+    "x": 1380,
+    "rotation": 2.1,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Had one of those freak good hair days where even the wind was somehow on my side."
+  },
+  {
+    "id": "636c41f5-d145-45cd-afa3-096f5801d555",
+    "lineId": "happy",
+    "type": "text",
+    "title": "Backyard Music",
+    "createdAt": "2026-04-18T08:14:00.000Z",
+    "x": 1720,
+    "rotation": -1.8,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Somebody was playing old salsa in the courtyard and three apartments worth of people started singing the chorus."
+  },
+  {
+    "id": "5d961282-4fe3-43e2-9bd9-2bc2e2a0f321",
+    "lineId": "happy",
+    "type": "text",
+    "title": "Found Money",
+    "createdAt": "2026-04-18T08:15:00.000Z",
+    "x": 2060,
+    "rotation": 1.2,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Pulled on last winter's coat and found twenty in the pocket. Instant personality improvement."
+  },
+  {
+    "id": "bdd82fc1-93d5-4c74-adf2-0e76576489bc",
+    "lineId": "happy",
+    "type": "drawing",
+    "title": "Cake Slice",
+    "createdAt": "2026-04-18T08:16:00.000Z",
+    "x": 2400,
+    "rotation": -2.4,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20680%20480%22%3E%3Crect%20width%3D%22680%22%20height%3D%22480%22%20fill%3D%22%23fffdf7%22%2F%3E%3Cpath%20d%3D%22M182%20306h312l-36%2084H218z%22%20fill%3D%22none%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2212%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M205%20222h267l22%2084H182z%22%20fill%3D%22none%22%20stroke%3D%22%23bf3657%22%20stroke-width%3D%2212%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M248%20194c18%200%2018%2022%2035%2022s17-22%2034-22%2017%2022%2034%2022%2017-22%2034-22%2017%2022%2034%2022%22%20fill%3D%22none%22%20stroke%3D%22%23167f86%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M338%20145v52%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M338%20126c10%208%2012%2019%200%2031-12-12-10-23%200-31z%22%20fill%3D%22none%22%20stroke%3D%22%23d79b21%22%20stroke-width%3D%228%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E"
+  },
+  {
+    "id": "6cf93e3f-77e4-4afe-b588-f9765a265b31",
+    "lineId": "happy",
+    "type": "text",
+    "title": "Dog Wave",
+    "createdAt": "2026-04-18T08:17:00.000Z",
+    "x": 2740,
+    "rotation": 2.3,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "A corgi in a raincoat looked directly at me this morning. Honestly enough reason to keep going."
+  },
+  {
+    "id": "d8e90af4-ba95-4a6b-a2c6-a42997bfbfcd",
+    "lineId": "happy",
+    "type": "text",
+    "title": "Passed The Call",
+    "createdAt": "2026-04-18T08:18:00.000Z",
+    "x": 3080,
+    "rotation": -0.8,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "The doctor said everything looked fine and I nearly skipped home like an idiot."
+  },
+  {
+    "id": "b3955812-e520-41f0-8e21-9470bf31f1e8",
+    "lineId": "happy",
+    "type": "text",
+    "title": "Warm Bread",
+    "createdAt": "2026-04-18T08:19:00.000Z",
+    "x": 3420,
+    "rotation": 1.7,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Bought bread still warm from the oven and tore the end off before I got around the block."
+  },
+  {
+    "id": "ab9cd750-36e4-4a4b-b7bf-5928855605ec",
+    "lineId": "sad",
+    "type": "text",
+    "title": "Her Mug",
+    "createdAt": "2026-04-18T08:20:00.000Z",
+    "x": 360,
+    "rotation": -2.2,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "I keep washing the blue mug even though nobody else is here to use it."
+  },
+  {
+    "id": "9f8bc732-435c-40d0-958e-3c150c56d04f",
+    "lineId": "sad",
+    "type": "drawing",
+    "title": "Rainy Window",
+    "createdAt": "2026-04-18T08:21:00.000Z",
+    "x": 700,
+    "rotation": 1.4,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20680%20480%22%3E%3Crect%20width%3D%22680%22%20height%3D%22480%22%20fill%3D%22%23f6fbff%22%2F%3E%3Crect%20x%3D%22170%22%20y%3D%2284%22%20width%3D%22340%22%20height%3D%22274%22%20fill%3D%22none%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2212%22%2F%3E%3Cpath%20d%3D%22M340%2084v274M170%20222h340%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2210%22%2F%3E%3Cpath%20d%3D%22M243%20130l-16%2046m83-46l-16%2046m83-46l-16%2046m83-46l-16%2046%22%20stroke%3D%22%23167f86%22%20stroke-width%3D%228%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M222%20268c0%200%2019-43%2037-43s37%2043%2037%2043%22%20fill%3D%22none%22%20stroke%3D%22%23bf3657%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.75%22%2F%3E%3C%2Fsvg%3E"
+  },
+  {
+    "id": "7afcf856-e278-4762-bd81-845b6ce713ad",
+    "lineId": "sad",
+    "type": "text",
+    "title": "Voice Note",
+    "createdAt": "2026-04-18T08:22:00.000Z",
+    "x": 1040,
+    "rotation": -1.1,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Listened to that old voice note again. Bad idea. Did it anyway."
+  },
+  {
+    "id": "97fc4c2e-2132-4eeb-bca4-9e9bbd89766b",
+    "lineId": "sad",
+    "type": "text",
+    "title": "Missed Turn",
+    "createdAt": "2026-04-18T08:23:00.000Z",
+    "x": 1380,
+    "rotation": 2.1,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Took the long way home just to avoid the street with the bookstore we used to stop at."
+  },
+  {
+    "id": "f5923d53-3251-441f-8c55-bf8443685f49",
+    "lineId": "sad",
+    "type": "text",
+    "title": "Socks Pair",
+    "createdAt": "2026-04-18T08:24:00.000Z",
+    "x": 1720,
+    "rotation": -1.8,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Found one of his socks behind the radiator. Not even a dramatic item. Still ruined my evening."
+  },
+  {
+    "id": "e80d33a7-c055-4e2d-b4d4-cec9f6ac4521",
+    "lineId": "sad",
+    "type": "drawing",
+    "title": "Bent Flower",
+    "createdAt": "2026-04-18T08:25:00.000Z",
+    "x": 2060,
+    "rotation": 1.2,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20680%20480%22%3E%3Crect%20width%3D%22680%22%20height%3D%22480%22%20fill%3D%22%23fffdf7%22%2F%3E%3Cpath%20d%3D%22M336%20138c24%200%2042%2018%2042%2042s-18%2042-42%2042-42-18-42-42%2018-42%2042-42z%22%20fill%3D%22none%22%20stroke%3D%22%23bf3657%22%20stroke-width%3D%2211%22%2F%3E%3Cpath%20d%3D%22M336%20222c-8%2077-34%20116-76%20153%22%20fill%3D%22none%22%20stroke%3D%22%2366875b%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M296%20276c28%209%2050%2024%2064%2046%22%20fill%3D%22none%22%20stroke%3D%22%2366875b%22%20stroke-width%3D%228%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M268%20200c18-22%2043-35%2068-35%22%20fill%3D%22none%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%228%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.7%22%2F%3E%3C%2Fsvg%3E"
+  },
+  {
+    "id": "dc078003-931c-4eb9-ba2b-a21fdb8a4816",
+    "lineId": "sad",
+    "type": "text",
+    "title": "No Appetite",
+    "createdAt": "2026-04-18T08:26:00.000Z",
+    "x": 2400,
+    "rotation": -2.4,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Made noodles, took four bites, then stood at the sink pretending I was just full."
+  },
+  {
+    "id": "4d2f3a9d-092e-4bf4-bb42-6a5e7a656941",
+    "lineId": "sad",
+    "type": "text",
+    "title": "Train Platform",
+    "createdAt": "2026-04-18T08:27:00.000Z",
+    "x": 2740,
+    "rotation": 2.3,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Watched two people reunite at the station and had to stare at the timetable for a minute."
+  },
+  {
+    "id": "27b1a63f-7934-435a-afc7-605cbcf2a928",
+    "lineId": "sad",
+    "type": "text",
+    "title": "Old Sweater",
+    "createdAt": "2026-04-18T08:28:00.000Z",
+    "x": 3080,
+    "rotation": -0.8,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "That sweater still smells faintly like the cheap soap from his place. I should wash it. I won't today."
+  },
+  {
+    "id": "aa7727ba-cdc5-4d99-a75b-ba41c55d900b",
+    "lineId": "sad",
+    "type": "text",
+    "title": "Half Song",
+    "createdAt": "2026-04-18T08:29:00.000Z",
+    "x": 3420,
+    "rotation": 1.7,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Couldn't finish the song in the grocery store because it was ours and I am apparently still fourteen inside."
+  },
+  {
+    "id": "4934a2ef-9e25-4d0e-b48d-81fee2f3df0c",
+    "lineId": "politics",
+    "type": "text",
+    "title": "Town Hall",
+    "createdAt": "2026-04-18T08:30:00.000Z",
+    "x": 360,
+    "rotation": -2.2,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Sat through a council meeting for three hours just to hear them dodge one simple question."
+  },
+  {
+    "id": "66914802-480b-4b54-9177-210e8847692e",
+    "lineId": "politics",
+    "type": "text",
+    "title": "Posters Again",
+    "createdAt": "2026-04-18T08:31:00.000Z",
+    "x": 700,
+    "rotation": 1.4,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Election posters went up overnight and somehow every smiling face still looks like a threat."
+  },
+  {
+    "id": "535e3164-e4c4-4e30-a47a-211a73509080",
+    "lineId": "politics",
+    "type": "drawing",
+    "title": "Ballot Box",
+    "createdAt": "2026-04-18T08:32:00.000Z",
+    "x": 1040,
+    "rotation": -1.1,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20680%20480%22%3E%3Crect%20width%3D%22680%22%20height%3D%22480%22%20fill%3D%22%23fffdf7%22%2F%3E%3Crect%20x%3D%22190%22%20y%3D%22184%22%20width%3D%22296%22%20height%3D%22172%22%20fill%3D%22none%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2212%22%2F%3E%3Cpath%20d%3D%22M276%20145h124l38%2065H238z%22%20fill%3D%22none%22%20stroke%3D%22%23167f86%22%20stroke-width%3D%2210%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M321%20255l24%2025%2054-57%22%20fill%3D%22none%22%20stroke%3D%22%23bf3657%22%20stroke-width%3D%2211%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M262%20184h152%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E"
+  },
+  {
+    "id": "6c1cd184-f5cd-4c6e-8da0-03259da53b8f",
+    "lineId": "politics",
+    "type": "text",
+    "title": "Rent Speech",
+    "createdAt": "2026-04-18T08:33:00.000Z",
+    "x": 1380,
+    "rotation": 2.1,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "If one more guy in a suit says \"hardworking families\" while raising my rent I am going to levitate."
+  },
+  {
+    "id": "aec1ceeb-06d4-47bc-bf54-180fa0d77257",
+    "lineId": "politics",
+    "type": "text",
+    "title": "Phone Banking",
+    "createdAt": "2026-04-18T08:34:00.000Z",
+    "x": 1720,
+    "rotation": -1.8,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Did phone banking last night. Two sweet grandmas, one conspiracy uncle, and three hang-ups. Pretty standard."
+  },
+  {
+    "id": "286ea7c5-14a9-4239-9cf4-b3113e79c37e",
+    "lineId": "politics",
+    "type": "text",
+    "title": "Sticker Pole",
+    "createdAt": "2026-04-18T08:35:00.000Z",
+    "x": 2060,
+    "rotation": 1.2,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "There are six layers of protest stickers on the lamp post by my station and honestly it's the most honest thing in town."
+  },
+  {
+    "id": "83e6c421-d285-438e-8842-1cfd51900dae",
+    "lineId": "politics",
+    "type": "drawing",
+    "title": "Megaphone",
+    "createdAt": "2026-04-18T08:36:00.000Z",
+    "x": 2400,
+    "rotation": -2.4,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20680%20480%22%3E%3Crect%20width%3D%22680%22%20height%3D%22480%22%20fill%3D%22%23f7fff8%22%2F%3E%3Cpath%20d%3D%22M170%20258l194-76v152z%22%20fill%3D%22none%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2212%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M364%20208c44-2%2086-17%20122-43v186c-39-29-77-42-122-43%22%20fill%3D%22none%22%20stroke%3D%22%23bf3657%22%20stroke-width%3D%2212%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M222%20286l34%2074%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M522%20173c23%2012%2039%2032%2047%2059m-47%2016c23%2012%2039%2032%2047%2059%22%20fill%3D%22none%22%20stroke%3D%22%23167f86%22%20stroke-width%3D%229%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E"
+  },
+  {
+    "id": "99c337b5-c887-4a71-9d8f-5e2cd65ad81d",
+    "lineId": "politics",
+    "type": "text",
+    "title": "Debate Face",
+    "createdAt": "2026-04-18T08:37:00.000Z",
+    "x": 2740,
+    "rotation": 2.3,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Turned off the debate after fifteen minutes because I could feel my jaw turning into brick."
+  },
+  {
+    "id": "5684f405-65a7-456f-bd2e-ec56dfc9f481",
+    "lineId": "politics",
+    "type": "text",
+    "title": "March Feet",
+    "createdAt": "2026-04-18T08:38:00.000Z",
+    "x": 3080,
+    "rotation": -0.8,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Got home from the march with sore feet, marker on my sleeve, and the rare feeling I wasn't completely useless."
+  },
+  {
+    "id": "705508ab-39d2-4f35-8231-1f8843f39c89",
+    "lineId": "politics",
+    "type": "text",
+    "title": "Policy Guy",
+    "createdAt": "2026-04-18T08:39:00.000Z",
+    "x": 3420,
+    "rotation": 1.7,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "The worst people always say \"let's be practical\" right before suggesting something cruel."
+  },
+  {
+    "id": "3689228f-9d21-4805-94c8-cbbe1579b997",
+    "lineId": "wallstreet",
+    "type": "text",
+    "title": "Opening Bell",
+    "createdAt": "2026-04-18T08:40:00.000Z",
+    "x": 360,
+    "rotation": -2.2,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Guy in my office said \"we love discipline\" at 9:31 and panic-bought ten seconds later."
+  },
+  {
+    "id": "2aece769-bf62-4a9f-ab6f-7f15c6ff4f41",
+    "lineId": "wallstreet",
+    "type": "drawing",
+    "title": "Bull Head",
+    "createdAt": "2026-04-18T08:41:00.000Z",
+    "x": 700,
+    "rotation": 1.4,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20680%20480%22%3E%3Crect%20width%3D%22680%22%20height%3D%22480%22%20fill%3D%22%23fffdf7%22%2F%3E%3Cpath%20d%3D%22M190%20290c26-68%2088-112%20167-112%2052%200%20106%2021%20142%2064%2013%2015%2028%2036%2037%2062%22%20fill%3D%22none%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M232%20182l-49-47m281%2038%2057-37%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22312%22%20cy%3D%22238%22%20r%3D%227%22%20fill%3D%22%232d2d2a%22%2F%3E%3Cpath%20d%3D%22M430%20302c-20%2024-43%2034-72%2034%22%20fill%3D%22none%22%20stroke%3D%22%23bf3657%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E"
+  },
+  {
+    "id": "15644d31-1550-452d-bd43-8e16281f7887",
+    "lineId": "wallstreet",
+    "type": "text",
+    "title": "Green Day Hero",
+    "createdAt": "2026-04-18T08:42:00.000Z",
+    "x": 1040,
+    "rotation": -1.1,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Nothing makes mediocre men louder than one green day in a row."
+  },
+  {
+    "id": "046c625d-373f-4631-b525-c8532707a284",
+    "lineId": "wallstreet",
+    "type": "text",
+    "title": "Lunch At Desk",
+    "createdAt": "2026-04-18T08:43:00.000Z",
+    "x": 1380,
+    "rotation": 2.1,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Ate a sad turkey sandwich over a spreadsheet and called it a strategy session."
+  },
+  {
+    "id": "403dd16b-9ec8-4ec2-8b38-2bf8c21bee27",
+    "lineId": "wallstreet",
+    "type": "text",
+    "title": "Ticker Brain",
+    "createdAt": "2026-04-18T08:44:00.000Z",
+    "x": 1720,
+    "rotation": -1.8,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "I checked futures before I brushed my teeth. This is not the version of adulthood I pictured."
+  },
+  {
+    "id": "6abf53b4-d097-4898-8e79-ea35b2462abf",
+    "lineId": "wallstreet",
+    "type": "text",
+    "title": "Coffee On Blotter",
+    "createdAt": "2026-04-18T08:45:00.000Z",
+    "x": 2060,
+    "rotation": 1.2,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Spilled coffee on my notes and somehow the stain improved the chart."
+  },
+  {
+    "id": "63e4daac-6319-4d17-8d1c-61966f8ac319",
+    "lineId": "wallstreet",
+    "type": "drawing",
+    "title": "Candles Up Down",
+    "createdAt": "2026-04-18T08:46:00.000Z",
+    "x": 2400,
+    "rotation": -2.4,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20680%20480%22%3E%3Crect%20width%3D%22680%22%20height%3D%22480%22%20fill%3D%22%23f6fbff%22%2F%3E%3Cpath%20d%3D%22M124%20364H560M124%20104v260%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M166%20312l54-64%2048%2034%2062-108%2068%2054%2074-92%2042%2031%22%20fill%3D%22none%22%20stroke%3D%22%23167f86%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M424%20157l90-21-28%2086%22%20fill%3D%22none%22%20stroke%3D%22%23bf3657%22%20stroke-width%3D%228%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E"
+  },
+  {
+    "id": "318d7328-0faf-4230-b9a3-85b44239455e",
+    "lineId": "wallstreet",
+    "type": "text",
+    "title": "Fed Day",
+    "createdAt": "2026-04-18T08:47:00.000Z",
+    "x": 2740,
+    "rotation": 2.3,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Fed day turns grown adults into horoscope girls. Everybody reading hidden signs into one sentence."
+  },
+  {
+    "id": "69fc6f3b-c5a8-4071-b0e3-c80613b4ad65",
+    "lineId": "wallstreet",
+    "type": "text",
+    "title": "Broker Voice",
+    "createdAt": "2026-04-18T08:48:00.000Z",
+    "x": 3080,
+    "rotation": -0.8,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "He says \"conviction\" when he means guessing with expensive shoes on."
+  },
+  {
+    "id": "c784e541-669a-4345-8085-0d6964fecc32",
+    "lineId": "wallstreet",
+    "type": "text",
+    "title": "After Hours",
+    "createdAt": "2026-04-18T08:49:00.000Z",
+    "x": 3420,
+    "rotation": 1.7,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "The floor feels like a casino with better tailoring and worse lighting."
+  },
+  {
+    "id": "ea81c84a-d076-431f-b809-e6ba256740ec",
+    "lineId": "art",
+    "type": "text",
+    "title": "Paint On Sleeve",
+    "createdAt": "2026-04-18T08:50:00.000Z",
+    "x": 360,
+    "rotation": -2.2,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Left the studio with blue paint on my sleeve and felt richer than when I left payroll."
+  },
+  {
+    "id": "365ff2f6-2344-4659-8529-ca0ed073eadf",
+    "lineId": "art",
+    "type": "text",
+    "title": "Bad Gallery Wine",
+    "createdAt": "2026-04-18T08:51:00.000Z",
+    "x": 700,
+    "rotation": 1.4,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Gallery wine was tragic but the woman standing next to me explained a sculpture like it mattered and I loved her for that."
+  },
+  {
+    "id": "8b708269-a2c3-4ee8-a091-e837b99ba4dd",
+    "lineId": "art",
+    "type": "drawing",
+    "title": "Abstract Swirls",
+    "createdAt": "2026-04-18T08:52:00.000Z",
+    "x": 1040,
+    "rotation": -1.1,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20680%20480%22%3E%3Crect%20width%3D%22680%22%20height%3D%22480%22%20fill%3D%22%23fff8fb%22%2F%3E%3Cpath%20d%3D%22M152%20298c43-113%20130-161%20248-138%2074%2014%20122%2057%20146%20132%22%20fill%3D%22none%22%20stroke%3D%22%23bf3657%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M183%20188c62%2023%20107%2065%20138%20126%22%20fill%3D%22none%22%20stroke%3D%22%23167f86%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M370%20149c34%2038%2054%2084%2061%20138%22%20fill%3D%22none%22%20stroke%3D%22%23d79b21%22%20stroke-width%3D%229%22%20stroke-linecap%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22284%22%20cy%3D%22230%22%20r%3D%2216%22%20fill%3D%22none%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%228%22%2F%3E%3C%2Fsvg%3E"
+  },
+  {
+    "id": "e3fb4342-ff34-4069-9be0-c47c6967bb63",
+    "lineId": "art",
+    "type": "text",
+    "title": "Cheap Sketchbook",
+    "createdAt": "2026-04-18T08:53:00.000Z",
+    "x": 1380,
+    "rotation": 2.1,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "My best drawings always start in the cheapest sketchbook I own. The fancy one scares me."
+  },
+  {
+    "id": "5bf4d4a0-f1e2-48cd-9c77-602a618fcf2a",
+    "lineId": "art",
+    "type": "text",
+    "title": "Frame Shop",
+    "createdAt": "2026-04-18T08:54:00.000Z",
+    "x": 1720,
+    "rotation": -1.8,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Spent more on framing than I made on the piece. Classic artist move."
+  },
+  {
+    "id": "510a9c0f-c0fb-43e6-8681-549ae6c5d024",
+    "lineId": "art",
+    "type": "text",
+    "title": "Museum Bench",
+    "createdAt": "2026-04-18T08:55:00.000Z",
+    "x": 2060,
+    "rotation": 1.2,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "I like watching people in museums more than I like half the work on the wall."
+  },
+  {
+    "id": "0871915d-48ed-49c6-93fb-c408c088af7f",
+    "lineId": "art",
+    "type": "drawing",
+    "title": "Brush Jar",
+    "createdAt": "2026-04-18T08:56:00.000Z",
+    "x": 2400,
+    "rotation": -2.4,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20680%20480%22%3E%3Crect%20width%3D%22680%22%20height%3D%22480%22%20fill%3D%22%23fffdf7%22%2F%3E%3Crect%20x%3D%22264%22%20y%3D%22222%22%20width%3D%22154%22%20height%3D%22124%22%20rx%3D%228%22%20fill%3D%22none%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2212%22%2F%3E%3Cpath%20d%3D%22M292%20222l-28-102m62%20102V96m50%20126%2027-97%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M264%20120c15-19%2029-19%2044%200m68-24c15-19%2029-19%2044%200m-112%2039c15-19%2029-19%2044%200%22%20fill%3D%22none%22%20stroke%3D%22%23bf3657%22%20stroke-width%3D%228%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E"
+  },
+  {
+    "id": "676e113f-ffc4-484e-90dd-75c4d70dec01",
+    "lineId": "art",
+    "type": "text",
+    "title": "Clay Nails",
+    "createdAt": "2026-04-18T08:57:00.000Z",
+    "x": 2740,
+    "rotation": 2.3,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "There is still clay under my thumbnail from Tuesday and I'm weirdly sentimental about it."
+  },
+  {
+    "id": "0bdc74f2-e582-4cad-9bce-e4915c5e5d07",
+    "lineId": "art",
+    "type": "text",
+    "title": "Open Studio",
+    "createdAt": "2026-04-18T08:58:00.000Z",
+    "x": 3080,
+    "rotation": -0.8,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "A kid at open studio said my painting looked like a storm eating cake. Best critique all year."
+  },
+  {
+    "id": "b101ff2e-da44-4a0d-8efd-997dc7db195b",
+    "lineId": "art",
+    "type": "text",
+    "title": "Practice Night",
+    "createdAt": "2026-04-18T08:59:00.000Z",
+    "x": 3420,
+    "rotation": 1.7,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Played the same four bars for an hour tonight until they finally sounded like mine."
+  },
+  {
+    "id": "a934e6e4-2926-41b2-98f4-35c33c6af4d4",
+    "lineId": "love",
+    "type": "text",
+    "title": "Two Toothbrushes",
+    "createdAt": "2026-04-18T09:00:00.000Z",
+    "x": 360,
+    "rotation": -2.2,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "There are two toothbrushes in my bathroom now and every morning that still feels slightly illegal."
+  },
+  {
+    "id": "98a99397-953e-4b00-ad1b-f453f54e4fd8",
+    "lineId": "love",
+    "type": "drawing",
+    "title": "Linked Hands",
+    "createdAt": "2026-04-18T09:01:00.000Z",
+    "x": 700,
+    "rotation": 1.4,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20680%20480%22%3E%3Crect%20width%3D%22680%22%20height%3D%22480%22%20fill%3D%22%23fffdf7%22%2F%3E%3Cpath%20d%3D%22M178%20284c41-35%2086-52%20132-52%2045%200%2082%2018%20123%2052%22%20fill%3D%22none%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M278%20232c10%2030%2024%2054%2044%2073m39-73c-10%2030-24%2054-44%2073%22%20fill%3D%22none%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M338%20170c16-27%2047-41%2076-41%2042%200%2071%2028%2071%2068%200%2065-74%20108-147%20166-73-58-147-101-147-166%200-40%2029-68%2071-68%2029%200%2060%2014%2076%2041%22%20fill%3D%22none%22%20stroke%3D%22%23bf3657%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%220.7%22%2F%3E%3C%2Fsvg%3E"
+  },
+  {
+    "id": "9a5893ec-cf4b-4ff6-b6b3-592632d91013",
+    "lineId": "love",
+    "type": "text",
+    "title": "Train Kiss",
+    "createdAt": "2026-04-18T09:02:00.000Z",
+    "x": 1040,
+    "rotation": -1.1,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Missed my stop because we were kissing like people in bad movies. Worth the extra walk back."
+  },
+  {
+    "id": "75dcb76d-e317-406d-89e9-ab694b6252ff",
+    "lineId": "love",
+    "type": "text",
+    "title": "Borrowed Hoodie",
+    "createdAt": "2026-04-18T09:03:00.000Z",
+    "x": 1380,
+    "rotation": 2.1,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "He took my hoodie and now it smells better than it ever did in my closet."
+  },
+  {
+    "id": "00abed32-b74c-4e74-b7c7-00c99eef10a0",
+    "lineId": "love",
+    "type": "text",
+    "title": "Tiny Fight",
+    "createdAt": "2026-04-18T09:04:00.000Z",
+    "x": 1720,
+    "rotation": -1.8,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Love is partly texting \"did you eat\" right after a dumb argument."
+  },
+  {
+    "id": "a5d4239c-15bc-4345-9f82-bb328f156a38",
+    "lineId": "love",
+    "type": "text",
+    "title": "Market Saturday",
+    "createdAt": "2026-04-18T09:05:00.000Z",
+    "x": 2060,
+    "rotation": 1.2,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "We argued over peaches at the market and then carried each other's bags home. That felt very grown up somehow."
+  },
+  {
+    "id": "545e5eae-0ef4-4523-ae00-44244d5edb9e",
+    "lineId": "love",
+    "type": "drawing",
+    "title": "Heart Letter",
+    "createdAt": "2026-04-18T09:06:00.000Z",
+    "x": 2400,
+    "rotation": -2.4,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20680%20480%22%3E%3Crect%20width%3D%22680%22%20height%3D%22480%22%20fill%3D%22%23f7fff8%22%2F%3E%3Crect%20x%3D%22184%22%20y%3D%22130%22%20width%3D%22312%22%20height%3D%22214%22%20fill%3D%22none%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2212%22%2F%3E%3Cpath%20d%3D%22M184%20145l156%20122%20156-122%22%20fill%3D%22none%22%20stroke%3D%22%232d2d2a%22%20stroke-width%3D%2210%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M340%20213c14-22%2040-33%2063-33%2035%200%2058%2023%2058%2055%200%2051-56%2085-121%20137-65-52-121-86-121-137%200-32%2023-55%2058-55%2023%200%2049%2011%2063%2033%22%20fill%3D%22none%22%20stroke%3D%22%23bf3657%22%20stroke-width%3D%229%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E"
+  },
+  {
+    "id": "bc564880-418e-4071-9191-b14a1e737201",
+    "lineId": "love",
+    "type": "text",
+    "title": "Phone Battery",
+    "createdAt": "2026-04-18T09:07:00.000Z",
+    "x": 2740,
+    "rotation": 2.3,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "I save five percent battery on the way home in case they call. Ridiculous behavior."
+  },
+  {
+    "id": "079d53c1-eac3-4cff-a40b-3d587762619d",
+    "lineId": "love",
+    "type": "text",
+    "title": "Soup Pot",
+    "createdAt": "2026-04-18T09:08:00.000Z",
+    "x": 3080,
+    "rotation": -0.8,
+    "color": "#fffdf7",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "Nothing says commitment like letting somebody stir your soup without asking what's in it."
+  },
+  {
+    "id": "a8cb4141-508a-4da3-93d3-4bd38c52da3c",
+    "lineId": "love",
+    "type": "text",
+    "title": "Soft Goodbye",
+    "createdAt": "2026-04-18T09:09:00.000Z",
+    "x": 3420,
+    "rotation": 1.7,
+    "color": "#f7fff8",
+    "votes": {
+      "up": 0,
+      "down": 0
+    },
+    "message": "He kissed my forehead at the station and suddenly the whole filthy platform seemed tender."
+  }
+]

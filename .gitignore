@@ -1,0 +1,9 @@
+node_modules/
+.firebase/
+
+*.log
+.codex-server*.log
+.codex-smoke*.log
+
+.DS_Store
+Thumbs.db
