@@ -2010,7 +2010,7 @@ body.line-picker-open .plane-banner-widget {
 }
 
 body.line-picker-open .plane-banner-link {
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 body.line-picker-open .line-picker-head,
