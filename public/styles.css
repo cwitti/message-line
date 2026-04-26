@@ -2005,9 +2005,11 @@ body.line-picker-open .title-actions {
 }
 
 body.line-picker-open .plane-banner-widget {
-  opacity: 0;
+  pointer-events: auto;
+}
+
+body.line-picker-open .plane-banner-link {
   pointer-events: none;
-  transform: translateY(-18px);
 }
 
 body.line-picker-open .line-picker-head,
