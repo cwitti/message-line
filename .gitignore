@@ -1,5 +1,6 @@
 node_modules/
 .firebase/
+public/firebase-config.js
 
 *.log
 .codex-server*.log
