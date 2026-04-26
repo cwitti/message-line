@@ -29,25 +29,19 @@ const NARROW_WORLD_SCALE = 0.39;
 const NOTE_SCALE_MOBILE = 0.79;
 const NOTE_SCALE_NARROW = 0.73;
 const NOTE_COOLDOWN_MS = 5 * 60 * 1000;
+const LINE_CREATION_COOLDOWN_MS = 60 * 60 * 1000;
 const LINE_START_RATIO = 0.35;
 const LINE_START_RATIO_MOBILE = 0.41;
 const LINE_BOTTOM_CLEARANCE_DESKTOP = 360;
 const LINE_BOTTOM_CLEARANCE_MOBILE = 210;
 const ACTIVE_LINE_STORAGE_KEY = "message-line-active-line";
 const LINE_COOLDOWN_STORAGE_KEY = "message-line-line-cooldowns";
+const LINE_CREATION_COOLDOWN_STORAGE_KEY = "message-line-line-creation-cooldown";
 const SWIPE_HINT_STORAGE_KEY = "message-line-swipe-hint-dismissed";
+const LINES_COLLECTION = "lines";
 const NOTES_COLLECTION = "notes";
 const NOTE_REPORTS_COLLECTION = "noteReports";
-const LINE_SUGGESTIONS_COLLECTION = "lineSuggestions";
 const DEFAULT_LINE_ID = "life";
-const firebaseConfig = {
-  apiKey: "AIzaSyBD_vdwWhmpeU8wvZKke-nNG-mt9F_jMSQ",
-  authDomain: "aihelper-3481c.firebaseapp.com",
-  projectId: "aihelper-3481c",
-  storageBucket: "aihelper-3481c.firebasestorage.app",
-  messagingSenderId: "559254482483",
-  appId: "1:559254482483:web:5e401d8ca49f07538d7d46"
-};
 const DEFAULT_LINE_PREVIEW_LAYOUT = {
   ratios: [0.16, 0.5, 0.82],
   rotations: [-4, 1.5, -2],
@@ -87,44 +81,61 @@ const LINE_CURVE_PATHS = [
   "M 0 42 C 195 54 410 54 630 47 S 860 36 1000 42",
   "M 0 43 C 205 52 420 49 640 45 S 865 39 1000 44"
 ];
-const lineOptions = [
+const COMMUNITY_LINE_SAMPLES = ["Fresh line", "New string", "Waiting for notes"];
+const builtInLineOptions = [
   {
     id: DEFAULT_LINE_ID,
     label: "Life",
-    samples: ["Laundry on the heater", "Missed call from dad", "Someone left soup outside"]
-  },
-  {
-    id: "happy",
-    label: "Happy",
-    samples: ["Bus driver waved back", "Cake at the office", "Sun came out at five"]
-  },
-  {
-    id: "sad",
-    label: "Sad",
-    samples: ["Her cup still here", "Rain on the stairwell", "Couldn't finish the song"]
-  },
-  {
-    id: "politics",
-    label: "Politics",
-    samples: ["Too many promises", "Council meeting ran long", "Sticker on a lamppost"]
-  },
-  {
-    id: "wallstreet",
-    label: "Wallstreet",
-    samples: ["Green at open", "Coffee on the blotter", "Everyone suddenly a genius"]
-  },
-  {
-    id: "art",
-    label: "Art",
-    samples: ["Paint on my sleeve", "Gallery was too quiet", "Someone laughed at the frame"]
+    samples: ["Laundry on the heater", "Missed call from dad", "Someone left soup outside"],
+    source: "built-in",
+    drawingOnly: false
   },
   {
     id: "love",
     label: "Love",
-    samples: ["Borrowed hoodie weather", "Two toothbrushes now", "Missed you on the platform"]
+    samples: ["Borrowed hoodie weather", "Two toothbrushes now", "Missed you on the platform"],
+    source: "built-in",
+    drawingOnly: false
+  },
+  {
+    id: "happy",
+    label: "Happy",
+    samples: ["Bus driver waved back", "Cake at the office", "Sun came out at five"],
+    source: "built-in",
+    drawingOnly: false
+  },
+  {
+    id: "sad",
+    label: "Sad",
+    samples: ["Her cup still here", "Rain on the stairwell", "Couldn't finish the song"],
+    source: "built-in",
+    drawingOnly: false
+  },
+  {
+    id: "politics",
+    label: "Politics",
+    samples: ["Too many promises", "Council meeting ran long", "Sticker on a lamppost"],
+    source: "built-in",
+    drawingOnly: false
+  },
+  {
+    id: "wallstreet",
+    label: "Wallstreet",
+    samples: ["Green at open", "Coffee on the blotter", "Everyone suddenly a genius"],
+    source: "built-in",
+    drawingOnly: false
+  },
+  {
+    id: "art",
+    label: "Art",
+    samples: ["Paint on my sleeve", "Gallery was too quiet", "Someone laughed at the frame"],
+    source: "built-in",
+    drawingOnly: false
   }
 ];
-const lineOptionsById = new Map(lineOptions.map((line) => [line.id, line]));
+let communityLineOptions = [];
+let lineOptions = [...builtInLineOptions];
+let lineOptionsById = new Map(lineOptions.map((line) => [line.id, line]));
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
@@ -148,14 +159,17 @@ const linePickerList = document.querySelector("#linePickerList");
 const linePickerScrollScribble = document.querySelector("#linePickerScrollScribble");
 const linePickerScrollThumb = document.querySelector("#linePickerScrollThumb");
 const linePickerStatus = document.querySelector("#linePickerStatus");
-const openLineSuggestion = document.querySelector("#openLineSuggestion");
-const lineSuggestionModal = document.querySelector("#lineSuggestionModal");
-const lineSuggestionForm = document.querySelector("#lineSuggestionForm");
-const lineSuggestionTitleInput = document.querySelector("#lineSuggestionTitleInput");
-const lineSuggestionTitleCounter = document.querySelector("#lineSuggestionTitleCounter");
-const lineSuggestionReasonInput = document.querySelector("#lineSuggestionReasonInput");
-const lineSuggestionReasonCounter = document.querySelector("#lineSuggestionReasonCounter");
-const lineSuggestionStatus = document.querySelector("#lineSuggestionStatus");
+const builtInLinesTab = document.querySelector("#builtInLinesTab");
+const userLinesTab = document.querySelector("#userLinesTab");
+const lineCreationCooldownTimer = document.querySelector("#lineCreationCooldownTimer");
+const openLineCreation = document.querySelector("#openLineCreation");
+const lineCreationModal = document.querySelector("#lineCreationModal");
+const lineCreationForm = document.querySelector("#lineCreationForm");
+const lineCreationTitleInput = document.querySelector("#lineCreationTitleInput");
+const lineCreationTitleCounter = document.querySelector("#lineCreationTitleCounter");
+const lineDrawingOnlyInput = document.querySelector("#lineDrawingOnlyInput");
+const lineCreationStatus = document.querySelector("#lineCreationStatus");
+const submitLineCreationButton = document.querySelector("#submitLineCreation");
 const swipeHint = document.querySelector("#swipeHint");
 const readerModal = document.querySelector("#readerModal");
 const readerTitle = document.querySelector("#readerTitle");
@@ -216,6 +230,7 @@ let isDrawing = false;
 let lastPoint = null;
 let shapeStartPoint = null;
 let canvasSnapshot = null;
+let linesUnsubscribe = null;
 let notesUnsubscribe = null;
 let currentReaderNoteId = null;
 let soundsUnlocked = false;
@@ -227,6 +242,8 @@ let voteRequestToken = 0;
 let lineLoadToken = 0;
 let suppressNoteClickUntil = 0;
 let currentLineId = readSavedLineId();
+let activeLinePickerTab = "built-in";
+let pendingCreatedLineFocusId = "";
 const pendingNoteCreations = new Map();
 const pendingVoteRequests = new Map();
 const noteColors = ["#fffdf7", "#f6fbff", "#f7fff8", "#fff8fb"];
@@ -305,7 +322,62 @@ function noteScaleAt(anchorX) {
 
 function normalizeLineId(value) {
   const id = String(value || "").trim().toLowerCase();
+  return id || DEFAULT_LINE_ID;
+}
+
+function resolveLineId(value) {
+  const id = normalizeLineId(value);
   return lineOptionsById.has(id) ? id : DEFAULT_LINE_ID;
+}
+
+function linePickerTabForLine(lineId) {
+  const line = lineOptionsById.get(normalizeLineId(lineId));
+  return line?.source === "community" ? "community" : "built-in";
+}
+
+function lineDisplayLabel(line) {
+  if (!line) return "Life";
+  return line.drawingOnly ? `${line.label} (drawings only)` : line.label;
+}
+
+function lineAllowsMessages(line = currentLine()) {
+  return !line?.drawingOnly;
+}
+
+function lineSlugFromLabel(label) {
+  return sanitizeTitle(label)
+    .slice(0, 40)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function normalizeStoredLine(line) {
+  const label = sanitizeTitle(line?.label).slice(0, 40);
+  const id = normalizeLineId(line?.id || lineSlugFromLabel(label));
+  if (!label || !id) return null;
+
+  return {
+    id,
+    label,
+    samples: COMMUNITY_LINE_SAMPLES,
+    source: "community",
+    drawingOnly: Boolean(line?.drawingOnly),
+    createdAt: String(line?.createdAt || "")
+  };
+}
+
+function sortCommunityLines(lines) {
+  return [...lines].sort((a, b) => {
+    const createdAtDelta = new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+    if (createdAtDelta) return createdAtDelta;
+    return a.label.localeCompare(b.label);
+  });
+}
+
+function rebuildLineRegistry() {
+  lineOptions = [...builtInLineOptions, ...sortCommunityLines(communityLineOptions)];
+  lineOptionsById = new Map(lineOptions.map((line) => [line.id, line]));
 }
 
 function readSavedLineId() {
@@ -398,10 +470,46 @@ function setLineCooldown(lineId, expiresAt) {
   persistLineCooldownMap(cooldowns);
 }
 
+function readLineCreationCooldown() {
+  try {
+    return Number(window.localStorage.getItem(LINE_CREATION_COOLDOWN_STORAGE_KEY)) || 0;
+  } catch {
+    return 0;
+  }
+}
+
+function setLineCreationCooldown(expiresAt) {
+  try {
+    window.localStorage.setItem(LINE_CREATION_COOLDOWN_STORAGE_KEY, String(expiresAt));
+  } catch {
+    // Ignore storage errors and keep the session-local line creation cooldown.
+  }
+}
+
+function getLineCreationCooldownRemaining() {
+  const expiresAt = readLineCreationCooldown();
+  if (!Number.isFinite(expiresAt) || expiresAt <= Date.now()) {
+    if (expiresAt > 0) {
+      try {
+        window.localStorage.removeItem(LINE_CREATION_COOLDOWN_STORAGE_KEY);
+      } catch {
+        // Ignore storage errors and keep the session-local line creation cooldown.
+      }
+    }
+    return 0;
+  }
+  return expiresAt - Date.now();
+}
+
 function formatCooldown(remainingMs) {
   const totalSeconds = Math.max(0, Math.ceil(remainingMs / 1000));
+  const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor(totalSeconds / 60);
+  const minutesWithinHour = Math.floor((totalSeconds % 3600) / 60);
   const seconds = totalSeconds % 60;
+  if (hours > 0) {
+    return `${hours}:${String(minutesWithinHour).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  }
   return `${minutes}:${String(seconds).padStart(2, "0")}`;
 }
 
@@ -410,45 +518,59 @@ function cooldownMessage(lineId = currentLineId) {
   return `Next note on ${line.label} in ${formatCooldown(getLineCooldownRemaining(line.id))}`;
 }
 
+function lineCreationCooldownMessage() {
+  return `Next new line in ${formatCooldown(getLineCreationCooldownRemaining())}`;
+}
+
 function syncCooldownUI() {
-  const remaining = getLineCooldownRemaining(currentLineId);
-  const isCoolingDown = remaining > 0;
+  const noteRemaining = getLineCooldownRemaining(currentLineId);
+  const isCoolingDown = noteRemaining > 0;
   const cooldownText = isCoolingDown ? cooldownMessage(currentLineId) : "";
+  const lineCreationRemaining = getLineCreationCooldownRemaining();
+  const isLineCreationCoolingDown = lineCreationRemaining > 0;
 
   lineCooldownTimer.textContent = cooldownText;
   lineCooldownTimer.classList.toggle("line-cooldown-hidden", !isCoolingDown);
   composerCooldownTimer.textContent = cooldownText;
   composerCooldownTimer.classList.toggle("line-cooldown-hidden", !isCoolingDown);
+  lineCreationCooldownTimer.textContent = isLineCreationCoolingDown ? lineCreationCooldownMessage() : "";
+  lineCreationCooldownTimer.classList.toggle("line-cooldown-hidden", !isLineCreationCoolingDown);
 
   openComposer.disabled = isCoolingDown;
   const composerLabel = openComposer.querySelector(".button-label");
   if (composerLabel) {
-    composerLabel.textContent = isCoolingDown ? `Wait ${formatCooldown(remaining)}` : "Add note";
+    composerLabel.textContent = isCoolingDown ? `Wait ${formatCooldown(noteRemaining)}` : "Add note";
   } else {
-    openComposer.textContent = isCoolingDown ? `Wait ${formatCooldown(remaining)}` : "Add note";
+    openComposer.textContent = isCoolingDown ? `Wait ${formatCooldown(noteRemaining)}` : "Add note";
+  }
+
+  openLineCreation.disabled = isLineCreationCoolingDown;
+  openLineCreation.textContent = isLineCreationCoolingDown ? `Wait ${formatCooldown(lineCreationRemaining)}` : "Create a line";
+  if (!lineCreationModal.classList.contains("hidden")) {
+    submitLineCreationButton.disabled = isLineCreationCoolingDown;
   }
 
   if (composerModal.classList.contains("hidden")) {
     saveNote.disabled = isCoolingDown;
   }
 
-  if (isCoolingDown && !cooldownTicker) {
+  if ((isCoolingDown || isLineCreationCoolingDown) && !cooldownTicker) {
     cooldownTicker = window.setInterval(syncCooldownUI, 1000);
-  } else if (!isCoolingDown && cooldownTicker) {
+  } else if (!isCoolingDown && !isLineCreationCoolingDown && cooldownTicker) {
     window.clearInterval(cooldownTicker);
     cooldownTicker = null;
   }
 }
 
 function currentLine() {
-  return lineOptionsById.get(currentLineId) || lineOptionsById.get(DEFAULT_LINE_ID);
+  return lineOptionsById.get(resolveLineId(currentLineId)) || lineOptionsById.get(DEFAULT_LINE_ID);
 }
 
 function updateLineContext() {
   const line = currentLine();
-  currentLineLabel.textContent = line.label;
-  composerLineLabel.textContent = line.label;
-  activeLineBadge.textContent = line.label;
+  currentLineLabel.textContent = lineDisplayLabel(line);
+  composerLineLabel.textContent = lineDisplayLabel(line);
+  activeLineBadge.textContent = lineDisplayLabel(line);
   syncCooldownUI();
 }
 
@@ -515,9 +637,20 @@ function stopNotesSubscription() {
   notesUnsubscribe = null;
 }
 
+function stopLinesSubscription() {
+  if (typeof linesUnsubscribe === "function") {
+    linesUnsubscribe();
+  }
+  linesUnsubscribe = null;
+}
+
 function firestorePermissionMessage(collectionName) {
-  if (collectionName === NOTE_REPORTS_COLLECTION || collectionName === LINE_SUGGESTIONS_COLLECTION) {
+  if (collectionName === NOTE_REPORTS_COLLECTION) {
     return `Firestore rules are blocking writes to "${collectionName}". Deploy the updated firestore.rules so this static app can save there.`;
+  }
+
+  if (collectionName === LINES_COLLECTION) {
+    return `Firestore rules are blocking access to "${collectionName}". Deploy the updated firestore.rules so created lines can load and save.`;
   }
 
   return "Firestore rules are blocking note access. Deploy the updated firestore.rules for the static app.";
@@ -559,13 +692,10 @@ function updateReportReasonCounter() {
   reportReasonCounter.classList.toggle("over-limit", length > 280);
 }
 
-function updateLineSuggestionCounters() {
-  const titleLength = lineSuggestionTitleInput.value.trim().length;
-  const reasonLength = lineSuggestionReasonInput.value.trim().length;
-  lineSuggestionTitleCounter.textContent = `${titleLength} / 40`;
-  lineSuggestionReasonCounter.textContent = `${reasonLength} / 280`;
-  lineSuggestionTitleCounter.classList.toggle("over-limit", titleLength > 40);
-  lineSuggestionReasonCounter.classList.toggle("over-limit", reasonLength > 280);
+function updateLineCreationCounter() {
+  const titleLength = lineCreationTitleInput.value.trim().length;
+  lineCreationTitleCounter.textContent = `${titleLength} / 40`;
+  lineCreationTitleCounter.classList.toggle("over-limit", titleLength > 40);
 }
 
 function clearElement(element) {
@@ -671,16 +801,50 @@ function linePreviewPointAtRatio(path, ratio) {
   return path.getPointAtLength((start + end) / 2);
 }
 
+function activeLineChoices() {
+  return activeLinePickerTab === "community" ? communityLineOptions : builtInLineOptions;
+}
+
+function renderLinePickerTabs() {
+  const builtInActive = activeLinePickerTab === "built-in";
+  builtInLinesTab.classList.toggle("active", builtInActive);
+  userLinesTab.classList.toggle("active", !builtInActive);
+  builtInLinesTab.setAttribute("aria-selected", String(builtInActive));
+  userLinesTab.setAttribute("aria-selected", String(!builtInActive));
+}
+
+function createLinePickerEmptyState() {
+  const empty = document.createElement("div");
+  const title = document.createElement("strong");
+  const copy = document.createElement("p");
+
+  empty.className = "line-picker-empty";
+  title.textContent = "No user-made lines yet.";
+  copy.textContent = "Make the first one and it will hang here right away.";
+  empty.append(title, copy);
+  return empty;
+}
+
 function renderLinePicker() {
   clearElement(linePickerList);
+  renderLinePickerTabs();
   const wireHeight = linePreviewWireHeight();
   const wireScale = wireHeight / 96;
+  const visibleLines = activeLineChoices();
+  linePickerList.classList.toggle("line-picker-list-empty", !visibleLines.length);
 
-  lineOptions.forEach((line, index) => {
+  if (!visibleLines.length) {
+    linePickerList.append(createLinePickerEmptyState());
+    syncLinePickerScrollScribble();
+    return;
+  }
+
+  visibleLines.forEach((line, index) => {
     const button = document.createElement("button");
     const labelWrap = document.createElement("div");
     const topic = document.createElement("span");
     const topicText = document.createElement("span");
+    const tag = line.drawingOnly ? document.createElement("span") : null;
     const wire = document.createElement("div");
     const notesPreview = document.createElement("div");
     const previewLayout = LINE_PREVIEW_LAYOUTS[index % LINE_PREVIEW_LAYOUTS.length] ?? DEFAULT_LINE_PREVIEW_LAYOUT;
@@ -697,7 +861,13 @@ function renderLinePicker() {
 
     topicText.textContent = line.label;
     topic.append(topicText, createLineScribble());
-    labelWrap.append(topic);
+    if (tag) {
+      tag.className = "line-choice-tag";
+      tag.textContent = "drawings only";
+      labelWrap.append(topic, tag);
+    } else {
+      labelWrap.append(topic);
+    }
 
     const curve = createLineCurve(index);
     wire.className = "line-choice-wire";
@@ -1075,6 +1245,96 @@ function focusActiveLineChoice() {
 
   if (activeChoice instanceof HTMLButtonElement) {
     activeChoice.focus();
+    return;
+  }
+
+  if (activeLinePickerTab === "community") {
+    openLineCreation.focus();
+    return;
+  }
+
+  builtInLinesTab.focus();
+}
+
+function focusPendingCreatedLine() {
+  if (!pendingCreatedLineFocusId) return;
+  const choice = linePickerList.querySelector(`.line-choice[data-line-id="${pendingCreatedLineFocusId}"]`);
+  if (choice instanceof HTMLButtonElement) {
+    choice.focus();
+    pendingCreatedLineFocusId = "";
+  }
+}
+
+function setLinePickerTab(tab, { focusActiveChoice = false } = {}) {
+  activeLinePickerTab = tab === "community" ? "community" : "built-in";
+  renderLinePicker();
+  if (focusActiveChoice) {
+    requestAnimationFrame(() => {
+      focusPendingCreatedLine();
+      if (pendingCreatedLineFocusId) {
+        return;
+      }
+      focusActiveLineChoice();
+    });
+  }
+}
+
+function refreshLineRegistry({ syncSelection = false, quiet = false } = {}) {
+  rebuildLineRegistry();
+
+  if (syncSelection) {
+    const resolvedLineId = resolveLineId(currentLineId);
+    if (resolvedLineId !== currentLineId) {
+      currentLineId = resolvedLineId;
+      persistLineId(currentLineId);
+      closeReader();
+      closeRankingPanel();
+      loadNotes({ quiet, resetScroll: true });
+    }
+  }
+
+  updateLineContext();
+  if (activeLinePickerTab === "community" && !communityLineOptions.length) {
+    activeLinePickerTab = "built-in";
+  }
+  if (linePickerIsOpen()) {
+    renderLinePicker();
+    requestAnimationFrame(focusPendingCreatedLine);
+  }
+}
+
+function subscribeToLines() {
+  stopLinesSubscription();
+
+  try {
+    linesUnsubscribe = onSnapshot(
+      collection(db, LINES_COLLECTION),
+      (snapshot) => {
+        communityLineOptions = sortCommunityLines(
+          snapshot.docs
+            .map((lineSnapshot) => normalizeStoredLine({ id: lineSnapshot.id, ...lineSnapshot.data() }))
+            .filter(Boolean)
+        );
+        refreshLineRegistry({ syncSelection: true, quiet: true });
+      },
+      (error) => {
+        communityLineOptions = [];
+        refreshLineRegistry({ syncSelection: true, quiet: true });
+        linePickerStatus.textContent = friendlyFirestoreError(
+          error,
+          "Created lines could not be loaded.",
+          LINES_COLLECTION
+        );
+      }
+    );
+  } catch (error) {
+    communityLineOptions = [];
+    refreshLineRegistry({ syncSelection: true, quiet: true });
+    linePickerStatus.textContent = friendlyFirestoreError(
+      error,
+      "Created lines could not be loaded.",
+      LINES_COLLECTION
+    );
   }
 }
 
@@ -1083,6 +1343,7 @@ function openLinePickerView(options = {}) {
 
   closeRankingPanel();
   linePickerStatus.textContent = "";
+  activeLinePickerTab = linePickerTabForLine(currentLineId);
   renderLinePicker();
   document.body.classList.toggle("line-picker-skip-scene-transition", skipSceneTransition);
   document.body.classList.add("line-picker-open");
@@ -1104,23 +1365,30 @@ function closeLinePickerView({ restoreFocus = true } = {}) {
   }
 }
 
-function openLineSuggestionModal() {
-  lineSuggestionForm.reset();
-  lineSuggestionStatus.textContent = "";
-  updateLineSuggestionCounters();
-  lineSuggestionModal.classList.remove("hidden");
-  requestAnimationFrame(() => lineSuggestionTitleInput.focus());
+function openLineCreationModal() {
+  const remaining = getLineCreationCooldownRemaining();
+  if (remaining > 0) {
+    linePickerStatus.textContent = lineCreationCooldownMessage();
+    syncCooldownUI();
+    return;
+  }
+
+  lineCreationForm.reset();
+  lineCreationStatus.textContent = "";
+  updateLineCreationCounter();
+  lineCreationModal.classList.remove("hidden");
+  requestAnimationFrame(() => lineCreationTitleInput.focus());
 }
 
-function closeLineSuggestionModal({ restoreFocus = true } = {}) {
-  lineSuggestionModal.classList.add("hidden");
+function closeLineCreationModal({ restoreFocus = true } = {}) {
+  lineCreationModal.classList.add("hidden");
   if (restoreFocus && linePickerIsOpen()) {
-    requestAnimationFrame(() => openLineSuggestion.focus());
+    requestAnimationFrame(() => openLineCreation.focus());
   }
 }
 
 function selectLine(lineId) {
-  const nextLineId = normalizeLineId(lineId);
+  const nextLineId = resolveLineId(lineId);
   if (nextLineId === currentLineId) {
     closeLinePickerView();
     return;
@@ -1284,12 +1552,16 @@ function exportDrawingDataUrl() {
 }
 
 function setMode(mode) {
-  currentMode = mode;
-  const isText = mode === "text";
+  const nextMode = !lineAllowsMessages() && mode === "text" ? "draw" : mode;
+  currentMode = nextMode;
+  const isText = nextMode === "text";
   textMode.classList.toggle("active", isText);
   drawMode.classList.toggle("active", !isText);
+  textMode.classList.toggle("disabled", !lineAllowsMessages());
   textMode.setAttribute("aria-selected", String(isText));
   drawMode.setAttribute("aria-selected", String(!isText));
+  textMode.setAttribute("aria-disabled", String(!lineAllowsMessages()));
+  textMode.disabled = !lineAllowsMessages();
   messagePanel.classList.toggle("hidden", !isText);
   drawingPanel.classList.toggle("hidden", isText);
   formError.textContent = "";
@@ -1313,7 +1585,10 @@ function openComposerModal() {
   formError.textContent = "";
   hasDrawn = false;
   updateLineContext();
-  setMode("text");
+  setMode(lineAllowsMessages() ? "text" : "draw");
+  if (!lineAllowsMessages()) {
+    formError.textContent = `${currentLine().label} only accepts drawings.`;
+  }
   updateTitleCounter();
   updateCounters();
   resetCanvas();
@@ -1443,6 +1718,7 @@ async function saveCurrentNote(event) {
 
     const body = { title: sanitizeTitle(title), lineId: requestLineId, type: currentMode === "draw" ? "drawing" : "text" };
     if (currentMode === "text") {
+      if (!lineAllowsMessages(currentLine())) throw new Error(`${currentLine().label} only accepts drawings.`);
       const message = sanitizeMessage(messageInput.value);
       const wordCount = words(message).length;
       if (!message) throw new Error("Write a message first.");
@@ -1664,43 +1940,70 @@ async function submitNoteReport(event) {
   }
 }
 
-async function submitLineSuggestion(event) {
+function upsertCommunityLine(line) {
+  const normalizedLine = normalizeStoredLine(line);
+  if (!normalizedLine) return;
+
+  communityLineOptions = sortCommunityLines(
+    [...communityLineOptions.filter((item) => item.id !== normalizedLine.id), normalizedLine]
+  );
+  refreshLineRegistry();
+}
+
+async function submitLineCreation(event) {
   event.preventDefault();
-  const label = lineSuggestionTitleInput.value.trim();
-  const reason = lineSuggestionReasonInput.value.trim();
-  if (!label) {
-    lineSuggestionStatus.textContent = "Add a line name first.";
-    return;
-  }
-  if (!reason) {
-    lineSuggestionStatus.textContent = "Add a short reason so it can be reviewed.";
+  const remaining = getLineCreationCooldownRemaining();
+  if (remaining > 0) {
+    lineCreationStatus.textContent = lineCreationCooldownMessage();
+    syncCooldownUI();
     return;
   }
 
-  const submitButton = lineSuggestionForm.querySelector('button[type="submit"]');
+  const label = sanitizeTitle(lineCreationTitleInput.value).slice(0, 40);
+  if (!label) {
+    lineCreationStatus.textContent = "Add a line name first.";
+    return;
+  }
+
+  const lineId = lineSlugFromLabel(label);
+  if (!lineId) {
+    lineCreationStatus.textContent = "Use letters or numbers in the line name.";
+    return;
+  }
+
+  if (lineOptionsById.has(lineId)) {
+    lineCreationStatus.textContent = "That line already exists.";
+    return;
+  }
+
+  const submitButton = lineCreationForm.querySelector('button[type="submit"]');
   submitButton.disabled = true;
-  lineSuggestionStatus.textContent = "";
+  lineCreationStatus.textContent = "";
+
+  const nextLine = {
+    id: lineId,
+    label,
+    drawingOnly: lineDrawingOnlyInput.checked,
+    createdAt: new Date().toISOString()
+  };
 
   try {
-    await addDoc(collection(db, LINE_SUGGESTIONS_COLLECTION), {
-      label: sanitizeTitle(label).slice(0, 40),
-      suggestedId:
-        sanitizeTitle(label)
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/^-+|-+$/g, "") || `suggested-line-${Date.now()}`,
-      reason: sanitizeMessage(reason).slice(0, 280),
-      status: "pending",
-      createdAt: new Date().toISOString()
-    });
+    await setDoc(doc(db, LINES_COLLECTION, lineId), nextLine);
 
-    closeLineSuggestionModal({ restoreFocus: false });
-    linePickerStatus.textContent = "Your suggestion was sent and will be reviewed.";
+    activeLinePickerTab = "community";
+    pendingCreatedLineFocusId = lineId;
+    upsertCommunityLine(nextLine);
+    setLineCreationCooldown(Date.now() + LINE_CREATION_COOLDOWN_MS);
+    closeLineCreationModal({ restoreFocus: false });
+    linePickerStatus.textContent = `Line created. Choose ${label} below.`;
+    syncCooldownUI();
+    renderLinePicker();
+    requestAnimationFrame(focusPendingCreatedLine);
   } catch (error) {
-    lineSuggestionStatus.textContent = friendlyFirestoreError(
+    lineCreationStatus.textContent = friendlyFirestoreError(
       error,
-      "The suggestion could not be saved.",
-      LINE_SUGGESTIONS_COLLECTION
+      "The line could not be created.",
+      LINES_COLLECTION
     );
   } finally {
     submitButton.disabled = false;
@@ -1779,7 +2082,7 @@ function wireScrolling() {
 }
 
 openLinePicker.addEventListener("click", openLinePickerView);
-openLineSuggestion.addEventListener("click", openLineSuggestionModal);
+openLineCreation.addEventListener("click", openLineCreationModal);
 openComposer.addEventListener("click", openComposerModal);
 jumpNewest.addEventListener("click", jumpToNewest);
 jumpTopUp.addEventListener("click", () => jumpToMostVoted("up"));
@@ -1788,16 +2091,24 @@ closeRanking.addEventListener("click", closeRankingPanel);
 openReportNote.addEventListener("click", openReportModal);
 upvoteButton.addEventListener("click", () => submitVote("up"));
 downvoteButton.addEventListener("click", () => submitVote("down"));
-textMode.addEventListener("click", () => setMode("text"));
+builtInLinesTab.addEventListener("click", () => setLinePickerTab("built-in", { focusActiveChoice: true }));
+userLinesTab.addEventListener("click", () => setLinePickerTab("community", { focusActiveChoice: true }));
+textMode.addEventListener("click", () => {
+  if (!lineAllowsMessages()) {
+    formError.textContent = `${currentLine().label} only accepts drawings.`;
+    setMode("draw");
+    return;
+  }
+  setMode("text");
+});
 drawMode.addEventListener("click", () => setMode("draw"));
 titleInput.addEventListener("input", updateTitleCounter);
 messageInput.addEventListener("input", updateCounters);
 reportReasonInput.addEventListener("input", updateReportReasonCounter);
-lineSuggestionTitleInput.addEventListener("input", updateLineSuggestionCounters);
-lineSuggestionReasonInput.addEventListener("input", updateLineSuggestionCounters);
+lineCreationTitleInput.addEventListener("input", updateLineCreationCounter);
 composerForm.addEventListener("submit", saveCurrentNote);
 reportForm.addEventListener("submit", submitNoteReport);
-lineSuggestionForm.addEventListener("submit", submitLineSuggestion);
+lineCreationForm.addEventListener("submit", submitLineCreation);
 clearCanvas.addEventListener("click", resetCanvas);
 brushSize.addEventListener("input", updateThickness);
 customColor.addEventListener("input", () => setActiveColor(customColor.value));
@@ -1818,8 +2129,8 @@ document.querySelectorAll("[data-close-reader]").forEach((element) => element.ad
 document.querySelectorAll("[data-close-composer]").forEach((element) => element.addEventListener("click", closeComposer));
 document.querySelectorAll("[data-close-report]").forEach((element) => element.addEventListener("click", () => closeReportModal()));
 document
-  .querySelectorAll("[data-close-line-suggestion]")
-  .forEach((element) => element.addEventListener("click", () => closeLineSuggestionModal()));
+  .querySelectorAll("[data-close-line-creation]")
+  .forEach((element) => element.addEventListener("click", () => closeLineCreationModal()));
 linePicker.addEventListener("click", (event) => {
   if (event.target === linePicker) {
     closeLinePickerView();
@@ -1839,8 +2150,8 @@ window.addEventListener("keydown", (event) => {
       closeReportModal();
       return;
     }
-    if (!lineSuggestionModal.classList.contains("hidden")) {
-      closeLineSuggestionModal();
+    if (!lineCreationModal.classList.contains("hidden")) {
+      closeLineCreationModal();
       return;
     }
     if (linePickerIsOpen()) {
@@ -1863,7 +2174,9 @@ window.addEventListener("resize", () => {
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
     stopNotesSubscription();
+    stopLinesSubscription();
   } else {
+    subscribeToLines();
     loadNotes({ quiet: true });
   }
 });
@@ -1881,8 +2194,9 @@ renderLinePicker();
 updateTitleCounter();
 updateCounters();
 updateReportReasonCounter();
-updateLineSuggestionCounters();
+updateLineCreationCounter();
 fitCanvas();
 syncCooldownUI();
+subscribeToLines();
 loadNotes({ resetScroll: true });
 openLinePickerView({ skipSceneTransition: true });

@@ -5,6 +5,7 @@ public/firebase-config.js
 *.log
 .codex-server*.log
 .codex-smoke*.log
+.codex-edge-dom.*
 
 .DS_Store
 Thumbs.db

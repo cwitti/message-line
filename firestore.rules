@@ -1,7 +1,7 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    function allowedLineIds() {
+    function builtInLineIds() {
       return ['life', 'happy', 'sad', 'politics', 'wallstreet', 'art', 'love'];
     }
 
@@ -13,8 +13,21 @@ service cloud.firestore {
       return ['message', 'image'];
     }
 
+    function isBuiltInLineId(lineId) {
+      return lineId is string && builtInLineIds().hasAny([lineId]);
+    }
+
+    function customLineExists(lineId) {
+      return lineId is string && exists(/databases/$(database)/documents/lines/$(lineId));
+    }
+
     function validLineId(lineId) {
-      return lineId is string && allowedLineIds().hasAny([lineId]);
+      return isBuiltInLineId(lineId) || customLineExists(lineId);
+    }
+
+    function lineAllowsText(lineId) {
+      return isBuiltInLineId(lineId)
+        || (customLineExists(lineId) && get(/databases/$(database)/documents/lines/$(lineId)).data.drawingOnly == false);
     }
 
     function validType(type) {
@@ -43,6 +56,7 @@ service cloud.firestore {
 
     function validTextPayload(data) {
       return data.type == 'text'
+        && lineAllowsText(data.lineId)
         && data.keys().hasAll(['message'])
         && !data.keys().hasAny(['image'])
         && data.message is string
@@ -132,18 +146,23 @@ service cloud.firestore {
     }
 
     function validLineSuggestion(data) {
-      return data.keys().hasOnly(['label', 'suggestedId', 'reason', 'status', 'createdAt'])
-        && data.keys().hasAll(['label', 'suggestedId', 'reason', 'status', 'createdAt'])
+      return data.keys().hasOnly(['id', 'label', 'drawingOnly', 'createdAt'])
+        && data.keys().hasAll(['id', 'label', 'drawingOnly', 'createdAt'])
+        && !isBuiltInLineId(data.id)
+        && data.id is string
+        && data.id.matches('^[a-z0-9]+(?:-[a-z0-9]+)*$')
         && data.label is string
         && data.label.size() > 0
         && data.label.size() <= 40
-        && data.suggestedId is string
-        && data.suggestedId.matches('^[a-z0-9]+(?:-[a-z0-9]+)*$')
-        && data.reason is string
-        && data.reason.size() > 0
-        && data.reason.size() <= 280
-        && data.status == 'pending'
+        && data.drawingOnly is bool
         && validCreatedAt(data.createdAt);
+    }
+
+    match /lines/{lineId} {
+      allow read: if true;
+      allow create: if request.resource.data.id == lineId
+        && validLineSuggestion(request.resource.data);
+      allow update, delete: if false;
     }
 
     match /notes/{noteId} {
@@ -161,9 +180,5 @@ service cloud.firestore {
       allow read, update, delete: if false;
     }
 
-    match /lineSuggestions/{suggestionId} {
-      allow create: if validLineSuggestion(request.resource.data);
-      allow read, update, delete: if false;
-    }
   }
 }

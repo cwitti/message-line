@@ -196,6 +196,14 @@
       <div class="line-picker-panel">
         <div class="line-picker-head">
           <h2 id="linePickerTitle">Choose a line.</h2>
+          <div class="line-picker-tabs" role="tablist" aria-label="Line groups">
+            <button class="tab line-picker-tab active" id="builtInLinesTab" type="button" role="tab" aria-selected="true">
+              Basic lines
+            </button>
+            <button class="tab line-picker-tab" id="userLinesTab" type="button" role="tab" aria-selected="false">
+              Created lines
+            </button>
+          </div>
         </div>
         <div class="line-picker-body">
           <div class="line-picker-list" id="linePickerList"></div>
@@ -232,7 +240,8 @@
       </div>
       <div class="line-picker-footer">
         <p class="line-picker-status" id="linePickerStatus" aria-live="polite"></p>
-        <button class="ghost-button line-suggest-trigger" id="openLineSuggestion" type="button">Suggest new line</button>
+        <p class="line-cooldown line-cooldown-hidden line-picker-cooldown" id="lineCreationCooldownTimer" aria-live="polite"></p>
+        <button class="ghost-button line-suggest-trigger" id="openLineCreation" type="button">Create a line</button>
       </div>
     </section>
 
@@ -279,28 +288,37 @@
       </form>
     </div>
 
-    <div class="modal hidden" id="lineSuggestionModal" role="dialog" aria-modal="true" aria-labelledby="lineSuggestionTitle">
-      <div class="modal-backdrop" data-close-line-suggestion></div>
-      <form class="composer utility-form" id="lineSuggestionForm">
-        <button class="icon-button composer-close" type="button" data-close-line-suggestion aria-label="Close">x</button>
-        <h2 id="lineSuggestionTitle">Suggest a new line.</h2>
-        <p class="composer-line-target">Your suggestion will be reviewed before it appears.</p>
+    <div class="modal hidden" id="lineCreationModal" role="dialog" aria-modal="true" aria-labelledby="lineCreationTitle">
+      <div class="modal-backdrop" data-close-line-creation></div>
+      <form class="composer utility-form" id="lineCreationForm">
+        <button class="icon-button composer-close" type="button" data-close-line-creation aria-label="Close">x</button>
+        <h2 id="lineCreationTitle">Create a new line.</h2>
+        <p class="composer-line-target">Fresh string, fresh rules.</p>
         <section class="composer-panel">
-          <label for="lineSuggestionTitleInput">Line name</label>
-          <input id="lineSuggestionTitleInput" maxlength="40" type="text" placeholder="Neighborhood gossip" autocomplete="off">
+          <label for="lineCreationTitleInput">Line name</label>
+          <input id="lineCreationTitleInput" maxlength="40" type="text" placeholder="Neighborhood gossip" autocomplete="off">
           <div class="counter-row">
-            <span id="lineSuggestionTitleCounter">0 / 40</span>
+            <span id="lineCreationTitleCounter">0 / 40</span>
           </div>
         </section>
-        <section class="composer-panel">
-          <label for="lineSuggestionReasonInput">Why this line?</label>
-          <textarea id="lineSuggestionReasonInput" maxlength="280" rows="5" placeholder="Tell us what kind of notes belong there."></textarea>
-          <div class="counter-row">
-            <span id="lineSuggestionReasonCounter">0 / 280</span>
-          </div>
+        <section class="composer-panel line-creation-mode-panel">
+          <span class="line-creation-mode-label">What belongs here?</span>
+          <label class="line-creation-toggle" for="lineDrawingOnlyInput">
+            <input id="lineDrawingOnlyInput" type="checkbox">
+            <span class="line-creation-toggle-copy">
+              <span class="line-creation-toggle-row">
+                <strong>Drawings only</strong>
+                <span class="line-creation-toggle-switch" aria-hidden="true">
+                  <span class="line-creation-toggle-switch-track"></span>
+                  <span class="line-creation-toggle-switch-knob"></span>
+                </span>
+              </span>
+              <span class="line-creation-toggle-note">Turn off message notes for this line.</span>
+            </span>
+          </label>
         </section>
-        <p class="form-error" id="lineSuggestionStatus" role="alert"></p>
-        <button class="primary-button full" id="submitLineSuggestion" type="submit">Send suggestion</button>
+        <p class="form-error" id="lineCreationStatus" role="alert"></p>
+        <button class="primary-button full" id="submitLineCreation" type="submit">Create line</button>
       </form>
     </div>
 
