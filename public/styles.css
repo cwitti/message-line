@@ -2005,6 +2005,7 @@ body.line-picker-open .title-actions {
 }
 
 body.line-picker-open .plane-banner-widget {
+  z-index: 44;
   pointer-events: auto;
 }
 
