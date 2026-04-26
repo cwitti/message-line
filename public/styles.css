@@ -388,7 +388,7 @@ h2 {
   border: 2px solid rgba(45, 45, 42, 0.78);
   border-radius: 8px 18px 12px 10px;
   background:
-    linear-gradient(180deg, rgba(255, 250, 233, 0.98), rgba(252, 241, 204, 0.98));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 245, 241, 0.98));
   color: var(--ink);
   box-shadow:
     0 9px 18px rgba(45, 45, 42, 0.12),
@@ -426,7 +426,7 @@ h2 {
   border-left: 0;
   border-radius: 0 12px 12px 0;
   background:
-    linear-gradient(180deg, rgba(255, 248, 223, 0.98), rgba(248, 229, 181, 0.98));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(243, 243, 239, 0.98));
   clip-path: polygon(0 0, 100% 0, 70% 50%, 100% 100%, 0 100%);
   transform: translateY(-50%);
 }
@@ -2002,6 +2002,12 @@ body.line-picker-open .title-actions {
   opacity: 0;
   pointer-events: none;
   transform: translateX(-50%) translateY(-14px);
+}
+
+body.line-picker-open .plane-banner-widget {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-18px);
 }
 
 body.line-picker-open .line-picker-head,
