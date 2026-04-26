@@ -10,7 +10,7 @@ import {
   setDoc,
   where
 } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
-import { firebaseConfig } from "./firebase-config.js";
+import { firebaseConfig } from "/firebase-config.js";
 
 const WORD_LIMIT = 45;
 const TITLE_LIMIT = 60;

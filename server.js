@@ -23,9 +23,39 @@ const mimeTypes = {
   ".mp3": "audio/mpeg"
 };
 
+function firebaseConfigFromEnv() {
+  const firebaseConfig = {
+    apiKey: process.env.FIREBASE_API_KEY || "",
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN || "",
+    projectId: process.env.FIREBASE_PROJECT_ID || "",
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET || "",
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || "",
+    appId: process.env.FIREBASE_APP_ID || ""
+  };
+
+  return Object.values(firebaseConfig).every(Boolean) ? firebaseConfig : null;
+}
+
+function sendFirebaseConfig(response, firebaseConfig) {
+  response.writeHead(200, {
+    "Content-Type": "text/javascript; charset=utf-8",
+    "Cache-Control": "no-cache"
+  });
+  response.end(`export const firebaseConfig = ${JSON.stringify(firebaseConfig, null, 2)};\n`);
+}
+
 async function serveFile(request, response) {
   const requestUrl = new URL(request.url, `http://${request.headers.host || "localhost"}`);
   const decodedPath = decodeURIComponent(requestUrl.pathname);
+
+  if (decodedPath === "/firebase-config.js") {
+    const envConfig = firebaseConfigFromEnv();
+    if (envConfig) {
+      sendFirebaseConfig(response, envConfig);
+      return;
+    }
+  }
+
   const relativePath = decodedPath === "/" ? "index.html" : decodedPath.replace(/^\/+/, "");
   const filePath = normalize(resolve(publicDir, relativePath));
 
