@@ -3,6 +3,9 @@ node_modules/
 public/firebase-config.js
 
 *.log
+.cdp-*.png
+.codex-mobile-*.png
+Screenshot *.jpg
 .codex-server*.log
 .codex-smoke*.log
 .codex-edge-dom.*
